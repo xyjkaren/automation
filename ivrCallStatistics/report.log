@@ -1,0 +1,3 @@
+2013-08-28 10:32:54 INFO  DefaultHttpClient:723 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-08-28 10:32:54 INFO  DefaultHttpClient:730 - Retrying request
+2013-08-28 10:32:55 INFO  Main:63 - yujie_xu

@@ -1,0 +1,13 @@
+2013-08-27 16:05:39 INFO  DefaultHttpClient:723 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-08-27 16:05:39 INFO  DefaultHttpClient:730 - Retrying request
+2013-08-27 16:07:06 INFO  DefaultHttpClient:723 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-08-27 16:07:06 INFO  DefaultHttpClient:730 - Retrying request
+2013-08-27 16:08:18 INFO  DefaultHttpClient:723 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-08-27 16:08:18 INFO  DefaultHttpClient:730 - Retrying request
+2013-08-27 16:08:18 INFO  Main:63 - yujie_xu
+2013-08-27 16:09:05 INFO  DefaultHttpClient:723 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-08-27 16:09:05 INFO  DefaultHttpClient:730 - Retrying request
+2013-08-27 16:09:06 INFO  Main:63 - yujie_xu
+2013-08-27 16:09:09 INFO  DefaultHttpClient:723 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-08-27 16:09:09 INFO  DefaultHttpClient:730 - Retrying request
+2013-08-27 16:09:10 INFO  Main:63 - yujie_xu

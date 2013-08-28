@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>My Application Settings</comment>
+<entry key="password">nuance1</entry>
+<entry key="username">yujie_xu</entry>
+<entry key="weburl">https://sun-qa-ncp03clone.engca.bevocal.com:8443/np</entry>
+<entry key="browser">ie</entry>
+</properties>
