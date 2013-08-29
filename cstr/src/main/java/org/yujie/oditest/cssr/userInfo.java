@@ -6,11 +6,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-import net.sourceforge.htmlunit.corejs.javascript.tools.debugger.Main;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public class userInfo {
 
 	private Properties properties = new Properties();

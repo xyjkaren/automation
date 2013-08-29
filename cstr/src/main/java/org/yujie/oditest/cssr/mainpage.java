@@ -24,7 +24,7 @@ public class mainpage {
 	protected String webUrl; 
 	private static final String IEpath = System.getProperty("user.dir");
 	protected userInfo user;
-	
+	protected WebElement submit;
 	
 	
 	public mainpage()
@@ -54,21 +54,10 @@ public class mainpage {
 	
 	public void gotomainpage()
 	{
-		//WebElement acc = driver.findElement(By.linkText("Account"));
-		//acc.click();
+		
 		
 		WebElement home = new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(By.linkText("Home")));
 		home.click();
-	
-//		try {
-//			
-//			new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath("id('sample-menu-1')/x:li[4]/x:a")));
-//			
-//		}
-//		catch(Exception ex)
-//		{
-//			logger.error("load home page failed");
-//		}
 	}
 	
 	public void TrendReport ()
@@ -98,7 +87,10 @@ public class mainpage {
 			}
 		}
 		
+		driver.switchTo().defaultContent();
 		
+		WebElement submittd = new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.id("submittd")));
+		submit = submittd.findElement(By.tagName("input"));
 	//	driver.switchTo().activeElement();
 		
 	}

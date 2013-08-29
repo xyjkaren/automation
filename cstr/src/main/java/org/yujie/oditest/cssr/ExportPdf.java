@@ -3,11 +3,10 @@ package org.yujie.oditest.cssr;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.internal.seleniumemulation.Submit;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -29,16 +28,12 @@ public class ExportPdf extends mainpage {
 	public void exportpdf()
 	{
 	
-		driver.switchTo().defaultContent();
 		
+		submit.click();
 		Iterator<String> iterator  = operations.iterator();
 		
 		while (iterator.hasNext())
 		{
-				
-		WebElement submittd = new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.id("submittd")));
-		WebElement submit = submittd.findElement(By.tagName("input"));
-		submit.click();
 		
 		String mainWinhandler = driver.getWindowHandle();
 		
