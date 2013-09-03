@@ -24,7 +24,10 @@ public class AppTest
         super( testName );
         Login logintest = new Login();
         logintest.execute();
-        ExportPdf pdfopen = new ExportPdf();
+        timestep selecttest = new timestep();
+        selecttest.updatedBasedOnTimePeriod();
+        generateHtml FinalRep = new generateHtml();
+        FinalRep.execute();
 // export PDF
        
         

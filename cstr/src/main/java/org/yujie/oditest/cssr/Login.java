@@ -11,8 +11,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 
 public class Login extends mainpage{
 
@@ -21,12 +20,13 @@ public class Login extends mainpage{
 	private static final String userNameXPath = "id('username')";
 	private static final String passwordXPath = "//*[@id='password']";
 	private static final String submitXPath = "//*[@id='login']/table/tbody/tr[4]/td[2]/div/input[3]";
-	//private static final String logOffXPath = "html/body/div[1]/div[2]/a[3]";
 	public String loginpageUrl;
 	
 	public Login()
 	{
 		super.setDriver();
+		ReportFile.addTestCase("login test", true);
+		logger.info("pass login fuc");
 	}
 	
 	public void execute ()
@@ -59,10 +59,7 @@ public class Login extends mainpage{
 	{
 		
 		
-		username = user.getProperties("username");
-		logger.info(username);
-		
-
+		username = user.getProperties("username");		
 		password = user.getProperties("password");
 		
 		if (username ==null || username.isEmpty())
@@ -87,7 +84,7 @@ public class Login extends mainpage{
 		catch(Exception ex)
 		{
 			gotomainpage();
-			logger.error("login failed");
+		//	logger.error("login failed");
 			throw new NoSuchElementException("invalid username or password");
 		}
 	}

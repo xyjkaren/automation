@@ -27,7 +27,6 @@ public class ExportPdf extends mainpage {
 	
 	public void exportpdf()
 	{
-	
 		
 		submit.click();
 		Iterator<String> iterator  = operations.iterator();
@@ -47,21 +46,21 @@ public class ExportPdf extends mainpage {
 		
 		if (iterator.next().equals("Open"))
 		{
-			logger.info("this is to open file");
+			//logger.info("this is to open file");
 		}
 		else if (iterator.next().equals("Save"))
 		{
-			logger.info("this is to save file");
+			//logger.info("this is to save file");
 		}
 		else if (iterator.next().equals("Cancel"))
 		{
-			logger.info("this is to cancel");
+			//logger.info("this is to cancel");
 		}
 		}
 //		WebElement pdf = new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(By.linkText("Export to PDF")));
 //		pdf.click();
 		
-		logger.info("Test case: Export to PDF open"); 
+		//logger.info("Test case: Export to PDF open"); 
 		
 		
 		//driver.switchTo().frame(driver.findElement(By.name("reportContent")));

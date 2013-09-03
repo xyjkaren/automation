@@ -17,6 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
 public class mainpage {
 
 	public static Logger logger = LoggerFactory.getLogger(Main.class);
@@ -25,19 +26,23 @@ public class mainpage {
 	private static final String IEpath = System.getProperty("user.dir");
 	protected userInfo user;
 	protected WebElement submit;
-	
+	public static WriteXmlFile ReportFile;
+
 	
 	public mainpage()
 	{
+		
+		
 		try {
 			user =  new userInfo("userinfo.xml");
-		}
+			}
 		catch (IOException e)
 		{
 			e.printStackTrace();
 		}
 		webUrl = user.getProperties("weburl");
 	}
+	
 	
 	public void setDriver()
 	{
@@ -50,6 +55,8 @@ public class mainpage {
 		}
 		else
 			driver = new FirefoxDriver();
+		
+		ReportFile = new WriteXmlFile();
 	}
 	
 	public void gotomainpage()
