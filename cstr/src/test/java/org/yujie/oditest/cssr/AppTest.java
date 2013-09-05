@@ -25,12 +25,11 @@ public class AppTest
         Login logintest = new Login();
         logintest.execute();
         timestep selecttest = new timestep();
-        selecttest.updatedBasedOnTimePeriod();
+        selecttest.updatedBasedOnTimePeriod("one hour");
         generateHtml FinalRep = new generateHtml();
         FinalRep.execute();
 // export PDF
-       
-        
+     
         
     }
     

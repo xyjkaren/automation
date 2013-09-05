@@ -1,0 +1,40 @@
+2013-08-29 15:29:05 INFO  Main:35 - read user info
+2013-08-29 15:29:08 INFO  DefaultHttpClient:723 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-08-29 15:29:08 INFO  DefaultHttpClient:730 - Retrying request
+2013-08-29 15:29:13 INFO  Main:35 - read user info
+2013-08-29 15:30:12 INFO  DefaultHttpClient:723 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-08-29 15:30:12 INFO  DefaultHttpClient:730 - Retrying request
+2013-08-29 15:32:28 INFO  Main:35 - read user info
+2013-08-29 15:33:21 INFO  Main:35 - read user info
+2013-08-29 15:33:24 INFO  DefaultHttpClient:723 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-08-29 15:33:24 INFO  DefaultHttpClient:730 - Retrying request
+2013-08-29 15:33:30 INFO  Main:35 - read user info
+2013-08-29 16:38:27 INFO  Main:35 - read user info
+2013-08-29 16:38:33 INFO  DefaultHttpClient:723 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-08-29 16:38:33 INFO  DefaultHttpClient:730 - Retrying request
+2013-08-29 16:38:40 INFO  Main:35 - read user info
+2013-08-29 16:38:54 INFO  Main:82 - 
+2013-08-29 16:40:06 INFO  Main:35 - read user info
+2013-08-29 16:40:09 INFO  DefaultHttpClient:723 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-08-29 16:40:09 INFO  DefaultHttpClient:730 - Retrying request
+2013-08-29 16:40:14 INFO  Main:35 - read user info
+2013-08-29 16:40:23 INFO  Main:82 - 
+2013-08-29 16:40:24 INFO  Main:86 - 
+2013-08-29 16:42:59 INFO  Main:35 - read user info
+2013-08-29 16:43:03 INFO  DefaultHttpClient:723 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-08-29 16:43:03 INFO  DefaultHttpClient:730 - Retrying request
+2013-08-29 16:43:09 INFO  Main:35 - read user info
+2013-08-29 16:43:21 INFO  Main:83 - 
+2013-08-29 16:44:29 INFO  Main:35 - read user info
+2013-08-29 16:44:33 INFO  DefaultHttpClient:723 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-08-29 16:44:33 INFO  DefaultHttpClient:730 - Retrying request
+2013-08-29 16:44:39 INFO  Main:35 - read user info
+2013-08-29 16:44:57 INFO  Main:35 - read user info
+2013-08-29 16:45:00 INFO  DefaultHttpClient:723 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-08-29 16:45:00 INFO  DefaultHttpClient:730 - Retrying request
+2013-08-29 16:45:06 INFO  Main:35 - read user info
+2013-08-29 16:48:26 INFO  Main:35 - read user info
+2013-08-29 16:48:30 INFO  DefaultHttpClient:723 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-08-29 16:48:30 INFO  DefaultHttpClient:730 - Retrying request
+2013-08-29 16:48:36 INFO  Main:35 - read user info
+2013-08-29 16:48:52 INFO  Main:90 - 08/11/2012
