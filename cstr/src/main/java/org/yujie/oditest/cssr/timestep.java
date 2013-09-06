@@ -298,7 +298,7 @@ public class timestep extends mainpage {
 	{
 		TrendReport();
 		testResult = "";
-		String[] timeperiod = {"7 months",	"1 year","13 months","5 years","6 years"}; 
+		String[] timeperiod = {"6 months","7 months",	"1 year","13 months","5 years","6 years"}; 
 		for (String s : timeperiod)
 		{
 			timeperiodchange(s);
