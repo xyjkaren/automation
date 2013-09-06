@@ -26,7 +26,7 @@ public class Login extends mainpage{
 	{
 		super.setDriver();
 		ReportFile.addTestCase("login test", true);
-		logger.info("pass login fuc");
+		logger.info("pass login fuction");
 	}
 	
 	public void execute ()
@@ -56,9 +56,7 @@ public class Login extends mainpage{
 	}
 	
 	public void getuserinfo() 
-	{
-		
-		
+	{		
 		username = user.getProperties("username");		
 		password = user.getProperties("password");
 		

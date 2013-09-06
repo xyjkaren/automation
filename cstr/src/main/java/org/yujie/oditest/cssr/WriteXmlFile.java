@@ -55,7 +55,6 @@ public class WriteXmlFile {
 		
 	public void addTestCase(String Testcase, boolean test)
 	{
-		logger.info("put string "+Testcase +"\n");
 		Element TestCase = doc.createElement("SECT");
 		TestCase.appendChild(doc.createTextNode(Testcase));
 		rootElement.appendChild(TestCase);
