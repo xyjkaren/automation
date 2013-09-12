@@ -505,204 +505,21 @@ public class timestep extends mainpage {
 	
 	
 	
-	public void timeperiodchange (String period)
-	{
-		boolean result = false;
-		//String mainWinhandler = driver.getWindowHandle();
 	
-		startdate = driver.findElement(By.id("PARAM_START_DATE"));
-		enddate = driver.findElement(By.id("PARAM_END_DATE"));
-		startdatetime = driver.findElement(By.id("PARAM_START_DATEtime"));
-		enddatetime = driver.findElement(By.id("PARAM_END_DATEtime"));
-		
-		String enddateValue = enddate.getAttribute("value");
-		String enddatetimeValue = enddatetime.getAttribute("value");
-		
-		((JavascriptExecutor)driver).executeScript("$('#PARAM_START_DATEtime').attr('readonly',false)");	
-		((JavascriptExecutor)driver).executeScript("$('#PARAM_END_DATEtime').attr('readonly',false)");	
-
-		
-		Calendar cal = Calendar.getInstance();
-		format = new SimpleDateFormat("MM/dd/yyyy HH:mm");
-		try {
-			Date date = format.parse(enddateValue + " " + enddatetimeValue);
-			cal.setTime(date);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-				
-		startdate.clear();
-		Alert alert = driver.switchTo().alert();
-		alert.dismiss();
-				
-		if (period.equals("one hour"))
-			{
-			try {
-			
-				String[] starttimes = format.format(cal.getTime()).split(" ");
-				
-				cal.add(Calendar.HOUR,1);			
-				String[] endblock = format.format(cal.getTime()).split(" ");
-				
-				startdate.sendKeys(starttimes[0]);
-				startdatetime.sendKeys(starttimes[1]);
-				
-				enddate.clear();
-				Alert alert2 = driver.switchTo().alert();
-				alert2.dismiss();
-				
-				enddate.sendKeys(endblock[0]);
-				
-				enddatetime.clear();
-							
-				enddatetime.sendKeys(endblock[1]);
-	
-				WebElement timesteps = driver.findElement(By.id("PARAM_TIME_STEP"));
-				timesteps.click();
-				
-				Select select = new Select(timesteps);
-				List<WebElement> timestep = select.getOptions();
-				
-				if (timestep.get(0).isEnabled() == true  )
-				{
-					for (int i = 1; i <timestep.size(); i++)
-					{
-						select.selectByIndex(i);
-						if (timestep.get(i).isEnabled() == true)
-							{
-							timestepTestresult = timestepTestresult + " Test case one hour period failed;";  
-							break;
-							}
-						else
-							timestepTestresult = timestepTestresult + " Test case one hour period succeed;";							
-					}
-			}
-		}
-		catch (NoAlertPresentException e)
-		{
-			e.printStackTrace();
-			driver.quit();
-		}
-		}
-		else if (period.equals("one day"))
-		{
-			cal.add(Calendar.DATE,-1);		
-			result = teststeps(cal, true, true, false, false, false, false);		
-			timestepTestresult += "Time period one day " + result + ";/s";
-
-		}
-		else if (period.equals("25 hours"))
-		{
-			cal.add(Calendar.HOUR,-25);
-			result = teststeps(cal, true, true, false, false, false, false);
-			timestepTestresult += "Time period 25 hours " + result + ";/s";
-
-		}
-		else if (period.equals("26 hours"))
-		{
-			cal.add(Calendar.HOUR,-26);
-			result = teststeps(cal, false, true, false, false, false, false);
-			timestepTestresult += "Time period 26 hours " + result + ";/s";
-
-		}
-		else if (period.equals("one week"))
-		{
-			cal.add(Calendar.DATE,-7);
-			result = teststeps(cal, false, true, true, false, false, false);
-			timestepTestresult += "Time period one week " + result + ";/s";
-
-		}
-		else if (period.equals("one month"))
-		{
-			cal.add(Calendar.MONTH, -1);
-			result = teststeps(cal, false, true, true, true, false, false);
-			timestepTestresult += "Time period one month " + result + ";/s";
-
-		}
-		else if (period.equals("32 days"))
-		{
-			cal.add(Calendar.DATE, -32);
-			result = teststeps(cal, false, true, true, true, false, false);
-			timestepTestresult += "Time period 32 days " + result + ";/s";
-
-		}
-		else if (period.equals("33 days"))
-		{
-			cal.add(Calendar.DATE, -33);
-			result = teststeps(cal, false, false, true, true, false, false);		
-			timestepTestresult += "Time period 33 days " + result + ";/s";
-
-		}
-		else if (period.equals("3 months"))
-		{
-			cal.add(Calendar.MONTH, -3);
-			result = teststeps(cal, false, false, true, true, true, false);
-			timestepTestresult += "Time period 3 months " + result + ";/s";
-
-		}
-		else if (period.equals("5 months"))
-		{
-			cal.add(Calendar.MONTH, -5);
-			result = teststeps(cal, false, false, true, true, true, false);
-			timestepTestresult += "Time period 5 months " + result + ";/s";
-
-		}
-		else if (period.equals("6 months & 1 day"))
-		{
-			cal.add(Calendar.MONTH, -6);
-			cal.add(Calendar.DATE, -1);
-			result = teststeps(cal, false, false, false, true, true, false);
-			timestepTestresult += "Time period 6 months & 1 day " + result + ";/s";
-		}
-		else if (period.equals("7 months"))
-		{
-			cal.add(Calendar.MONTH, -7);
-			result = teststeps(cal, false, false, false, true, true, false);
-			timestepTestresult += "Time period 7 months " + result + ";/s";
-		}
-		else if (period.equals("1 year"))
-		{
-			cal.add(Calendar.YEAR, -1);
-			result = teststeps(cal, false, false, false, true, true, true);
-			timestepTestresult += "Time period 1 year " + result + ";";
-		}
-		else if (period.equals("13 months"))
-		{
-			cal.add(Calendar.MONTH, -13);
-			result = teststeps(cal, false, false, false, true, true, true);
-			timestepTestresult += "Time period 13 months " + result + ";/s";
-		}
-		else if (period.equals("5 years"))
-		{
-			cal.add(Calendar.YEAR, -5);
-			result = teststeps(cal, false, false, false, false, true, true);
-			timestepTestresult += "Time period 5 years " + result + ";/s";
-		}
-		else if (period.equals("6 years"))
-		{
-			cal.add(Calendar.YEAR, -6);
-			result = teststeps(cal, false, false, false, false, false, true);
-			timestepTestresult += "Time period 6 years " + result + ";/s";
-		}
-		
-	
-}
-	
-	public void quarterSelectionSorting()
+	public void yearSelectionSorting()
 	{
 		TrendReport();
 		
 		List<WebElement> week;
 		ArrayList<Date> Weeklist = new ArrayList<Date>();	
 	
-		setTime("13 months");
+		setTime("3 years");
 		
 		WebElement timesteps = driver.findElement(By.id("PARAM_TIME_STEP"));
 		timesteps.click();
 		
 		Select select = new Select(timesteps); 
-		select.selectByValue("QUARTER");
+		select.selectByValue("YEAR");
 		
 		submit.click();
 		
@@ -716,7 +533,7 @@ public class timestep extends mainpage {
 			
 			for (int i = 0;i < week.size(); i++)
 			{
-				if (week.get(i).getText().equals("Quarter"))
+				if (week.get(i).getText().equals("Year"))
 					startpos = i;
 				else if(week.get(i).getText().equals("Additional Filters:"))
 					endpos = i; 
@@ -742,9 +559,9 @@ public class timestep extends mainpage {
 			for (int i = 0; i < Weeklist.size() - 1; i ++)
 			{
 				if (Weeklist.get(i).before(Weeklist.get(i+1)))
-					ReportFile.addTestCase("ODI6.x-670:Time step day sorting", "ODI6.x-670:Time step quarter sorting => succeed");
+					ReportFile.addTestCase("ODI6.x-670:Time step day sorting", "ODI6.x-670:Time step year sorting => succeed");
 				else
-					ReportFile.addTestCase("ODI6.x-670:Time step day sorting", "ODI6.x-670:Time step quarter sorting => failed");
+					ReportFile.addTestCase("ODI6.x-670:Time step day sorting", "ODI6.x-670:Time step year sorting => failed");
 					
 			}
 		
@@ -765,6 +582,23 @@ public class timestep extends mainpage {
 		gotomainpage();
 		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -953,6 +787,10 @@ public class timestep extends mainpage {
 		
 	
 }
+	
+	
+	
+	
 	
 	
 	
