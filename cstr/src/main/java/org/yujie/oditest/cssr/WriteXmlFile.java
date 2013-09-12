@@ -53,21 +53,15 @@ public class WriteXmlFile {
 		}
 	}
 		
-	public void addTestCase(String Testcase, boolean test)
+	public void addTestCase(String Testcase, String testResult)
 	{
 		Element TestCase = doc.createElement("SECT");
 		TestCase.appendChild(doc.createTextNode(Testcase));
 		rootElement.appendChild(TestCase);
 		String result = "";
 		
-		if (test == true)
-		{
-			result = Testcase + "result: passed";
-		}
-		else
-		{
-			result = Testcase + "result: Failed";
-		}
+			result = testResult;
+		
 		
 		Element Param = doc.createElement("PARA");
 		Param.appendChild(doc.createTextNode(result));
@@ -96,7 +90,6 @@ public class WriteXmlFile {
 	public static void main(String[] args)
 	{
 		WriteXmlFile w = new WriteXmlFile();
-		w.addTestCase("this is test 001", true);
 		w.WriteToFile();
 	}
 	

@@ -7,6 +7,8 @@ import java.util.concurrent.TimeUnit;
 import net.sourceforge.htmlunit.corejs.javascript.tools.debugger.Main;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -62,29 +64,42 @@ public class mainpage {
 	public void gotomainpage()
 	{
 		
+		//WebElement home = new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(By.linkText("Home")));
+		try{
+			WebElement home = driver.findElement(By.linkText("Home"));
+			home.click();
+		}
+		catch(NoSuchElementException e)
+		{
+			logger.info("can't home button on the page");
+			driver.switchTo().defaultContent();
+			gotomainpage();
+		}
 		
-		WebElement home = new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(By.linkText("Home")));
-		home.click();
 	}
 	
 	public void TrendReport ()
 	{
-		WebElement OnDemandInsight = new WebDriverWait(driver,10).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='sample-menu-1']/li[4]/a")));
-		actionClick(OnDemandInsight);
 		
+		try{
+					
+			WebElement OnDemandInsight = new WebDriverWait(driver,5).until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[5]/div[2]/div/div[2]/ul/li[4]/a")));
+			//actionClick(OnDemandInsight);
+			OnDemandInsight.click();
 		
-		WebElement Reports = new WebDriverWait(driver,10).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='sample-menu-1']/li[4]/ul/li[2]/a")));
-		actionClick(Reports);
+			WebElement Reports = new WebDriverWait(driver,5).until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[5]/div[2]/div/div[2]/ul/li[4]/ul/li[2]/a")));
+			//actionClick(Reports);
+			Reports.click();
 		
-		
-		WebElement CallStatisticsTrendReport = new WebDriverWait(driver,10).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='sample-menu-1']/li[4]/ul/li[2]/ul/li[2]/a")));
-		actionClick(CallStatisticsTrendReport);
-		
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+			WebElement CallStatisticsTrendReport = new WebDriverWait(driver,5).until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[5]/div[2]/div/div[2]/ul/li[4]/ul/li[2]/ul/li[2]/a")));
+			//actionClick(CallStatisticsTrendReport);
+			CallStatisticsTrendReport.click();
+			
+			driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
-		String mainWinhandler = driver.getWindowHandle();
+			String mainWinhandler = driver.getWindowHandle();
 		
-		Set<String> handles = driver.getWindowHandles();
+			Set<String> handles = driver.getWindowHandles();
 		
 		for (String handle : handles){
 			if (!mainWinhandler.equals(handle))
@@ -98,6 +113,14 @@ public class mainpage {
 		
 		WebElement submittd = new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.id("submittd")));
 		submit = submittd.findElement(By.tagName("input"));
+		
+		}
+		catch (TimeoutException e)
+		{
+			logger.info("timeout exception"); 
+			gotomainpage();
+			TrendReport();
+		}
 	//	driver.switchTo().activeElement();
 		
 	}

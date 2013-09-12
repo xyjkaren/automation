@@ -37,7 +37,7 @@ public class ExportPdf extends mainpage {
 		
 		new WebDriverWait(driver, 10).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("reportContent"));
 		new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.id("CrystalViewercridreportpage")));
-
+		
 		driver.switchTo().window(mainWinhandler);
 		
 		WebElement export = new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(By.id("iExport")));

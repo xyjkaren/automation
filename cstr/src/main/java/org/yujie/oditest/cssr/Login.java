@@ -25,7 +25,6 @@ public class Login extends mainpage{
 	public Login()
 	{
 		super.setDriver();
-		ReportFile.addTestCase("login test", true);
 		logger.info("pass login fuction");
 	}
 	
