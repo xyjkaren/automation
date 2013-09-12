@@ -6,11 +6,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class userInfo {
+public class UserInfo {
 
 	private Properties properties = new Properties();
 	
-	public userInfo (String userPropath) throws IOException
+	public UserInfo (String userPropath) throws IOException
 	{
 		InputStream is = new FileInputStream(userPropath);
 		try {
@@ -43,7 +43,7 @@ public class userInfo {
 	}
 
 	public static void main(String[] args) throws IOException{
-	 userInfo user = new userInfo("userinfo.xml");
+	 UserInfo user = new UserInfo("userinfo.xml");
       System.out.println(user.getProperties("username"));
 		
 	}

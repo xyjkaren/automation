@@ -23,7 +23,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.google.common.collect.Sets.SetView;
 
-public class timestep extends mainpage {
+public class Timestep extends Mainpage {
 	
 	private String timestepTestresult;
 	private DateFormat format;
@@ -33,7 +33,7 @@ public class timestep extends mainpage {
 	private WebElement enddatetime;
 	
 	
-	public timestep()
+	public Timestep()
 	{
 		gotomainpage();
 	}
@@ -74,7 +74,7 @@ public class timestep extends mainpage {
 		
 		WebElement timeRange = driver.findElement(By.id("date_range"));
 		Select select = new Select(timeRange);
-		select.selectByValue("l30d");
+		select.selectByValue("");
 		
 		WebElement timesteps = driver.findElement(By.id("PARAM_TIME_STEP"));
 		timesteps.click();
@@ -141,14 +141,12 @@ public class timestep extends mainpage {
 	{
 		TrendReport();
 		
-		WebElement timeRange = driver.findElement(By.id("date_range"));
-		Select select = new Select(timeRange);
-		select.selectByValue("l30d");
+		setTime("3 months");
 		
 		WebElement timesteps = driver.findElement(By.id("PARAM_TIME_STEP"));
 		timesteps.click();
 		
-		select = new Select(timesteps); 
+		Select select = new Select(timesteps); 
 		select.selectByValue("MONTH");
 		
 		submit.click();
@@ -159,11 +157,11 @@ public class timestep extends mainpage {
 			
 			WebElement week = driver.findElement(By.xpath("//*[text()='Month']"));
 			
-			ReportFile.addTestCase("ODI6.x-664:Time step week selection started", "ODI6.x-664:Time step week selection started => succeed");
+			ReportFile.addTestCase("ODI6.x-664:Time step week selection started", "ODI6.x-664:Time step month selection started => succeed");
 		}
 		catch(NoSuchElementException e)
 		{
-		ReportFile.addTestCase("ODI6.x-664:Time step week selection started", "ODI6.x-664:Time step week selection started => fail");
+		ReportFile.addTestCase("ODI6.x-664:Time step week selection started", "ODI6.x-664:Time step month selection started => fail");
 		}
 		
 		driver.switchTo().defaultContent();
@@ -171,6 +169,76 @@ public class timestep extends mainpage {
 		gotomainpage();
 			
 	}
+	
+	public void quarterSelection()
+	{
+		TrendReport();
+		
+		setTime("1 year");
+	
+		
+		WebElement timesteps = driver.findElement(By.id("PARAM_TIME_STEP"));
+		timesteps.click();
+		
+		Select select = new Select(timesteps); 
+		select.selectByValue("QUARTER");
+		
+		submit.click();
+		
+		new WebDriverWait(driver, 10).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("reportContent"));
+		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("CrystalViewercridreportpage")));
+		try{
+			
+			WebElement week = driver.findElement(By.xpath("//*[text()='Quarter']"));
+			
+			ReportFile.addTestCase("ODI6.x-664:Time step week selection started", "ODI6.x-664:Time step quarter selection started => succeed");
+		}
+		catch(NoSuchElementException e)
+		{
+		ReportFile.addTestCase("ODI6.x-664:Time step week selection started", "ODI6.x-664:Time step quarter selection started => failed");
+		}
+		
+		driver.switchTo().defaultContent();
+		ReportFile.WriteToFile();
+		gotomainpage();
+			
+	}
+	
+	public void yearSelection()
+	{
+		TrendReport();
+		
+		setTime("2 years");
+		
+		WebElement timesteps = driver.findElement(By.id("PARAM_TIME_STEP"));
+		timesteps.click();
+		
+		Select select = new Select(timesteps); 
+		select.selectByValue("YEAR");
+		
+		submit.click();
+		
+		new WebDriverWait(driver, 10).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("reportContent"));
+		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("CrystalViewercridreportpage")));
+		try{
+			
+			WebElement week = driver.findElement(By.xpath("//*[text()='Year']"));
+			
+			ReportFile.addTestCase("ODI6.x-664:Time step week selection started", "ODI6.x-664:Time step Year selection started => succeed");
+		}
+		catch(NoSuchElementException e)
+		{
+		ReportFile.addTestCase("ODI6.x-664:Time step week selection started", "ODI6.x-664:Time step Year selection started => failed");
+		}
+		
+		driver.switchTo().defaultContent();
+		ReportFile.WriteToFile();
+		gotomainpage();
+			
+	}
+	
+	
+	
 	
 	public void weekSelectionSorting()
 	{
@@ -603,7 +671,7 @@ public class timestep extends mainpage {
 	
 	
 	
-	
+	//operations for different time range
 	public void timeperiodchange (String period)
 	{
 		boolean result = false;
@@ -787,14 +855,8 @@ public class timestep extends mainpage {
 		
 	
 }
-	
-	
-	
-	
-	
-	
-	
-//test different time period.	
+		
+	//test different time period.	
 	public boolean teststeps(Calendar calender, boolean hour, boolean day, boolean week, boolean month, boolean quarter,boolean year)
 	{
 		boolean result = false;
@@ -839,6 +901,7 @@ public class timestep extends mainpage {
 			return result;
 	}
 	
+	// test case :updated based on time period
 	public void updatedBasedOnTimePeriod()
 	{
 		String TestCase = "ODI6.x-661:Time Step value is updated based on time period selection";
@@ -860,6 +923,7 @@ public class timestep extends mainpage {
 		//driver.quit();
 	}
 
+	//set start time with specific time range
 	public void setTime (String period)
 	{
 		startdate = driver.findElement(By.id("PARAM_START_DATE"));
@@ -900,6 +964,12 @@ public class timestep extends mainpage {
 		else if(period.equals("13 months"))
 		{
 			cal.add(Calendar.MONTH, -13);
+			String starttime = format.format(cal.getTime());
+			startdate.sendKeys(starttime);
+		}
+		else if(period.equals("2 years"))
+		{
+			cal.add(Calendar.YEAR, -2);
 			String starttime = format.format(cal.getTime());
 			startdate.sendKeys(starttime);
 		}

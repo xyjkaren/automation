@@ -20,23 +20,23 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-public class mainpage {
+public class Mainpage {
 
 	public static Logger logger = LoggerFactory.getLogger(Main.class);
 	protected static WebDriver driver;
 	protected String webUrl; 
 	private static final String IEpath = System.getProperty("user.dir");
-	protected userInfo user;
+	protected UserInfo user;
 	protected WebElement submit;
 	public static WriteXmlFile ReportFile;
 
 	
-	public mainpage()
+	public Mainpage()
 	{
 		
 		
 		try {
-			user =  new userInfo("userinfo.xml");
+			user =  new UserInfo("userinfo.xml");
 			}
 		catch (IOException e)
 		{

@@ -21,7 +21,7 @@ import org.xml.sax.SAXException;
 
 
 
-public class generateHtml {
+public class GenerateHtml {
 
 	
 	public void execute()

@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
-public class ExportPdf extends mainpage {
+public class ExportPdf extends Mainpage {
 
 	private List<String> operations;
 	
