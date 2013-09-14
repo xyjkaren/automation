@@ -9,6 +9,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 
+import junit.framework.Assert;
+
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -17,6 +19,7 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -67,11 +70,87 @@ public class Timestep extends Mainpage {
 		return result;
 	}
 	
+	//	ODI6.x-646: CSTR - Search
+	
+	//	ODI6.x-650:Report look'n Feel: Enhancement from Portal
+	public void EnhancementFromPortal()
+	{
+		TrendReport();
+		try{			
+		
+			WebElement timeRange = driver.findElement(By.id("date_range"));
+			Select select = new Select(timeRange);
+			select.selectByValue("l30d");
+		
+			WebElement timesteps = driver.findElement(By.id("PARAM_TIME_STEP"));
+			timesteps.click();
+			
+			select = new Select(timesteps); 
+			select.selectByValue("WEEK");
+			
+			submit.click();
+		} catch (NoSuchElementException e)
+		{
+			gotomainpage();
+			weekSelection();
+		}
+		
+		try{
+			
+			new WebDriverWait(driver, 10).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("reportContent"));
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("CrystalViewercridreportpage")));
+			
+			WebElement header = driver.findElement(By.xpath("//*[text() = '']"));
+			//header.getCssValue(arg0)
+			
+		} catch(TimeoutException e)
+		{
+			logger.info("enhancementFromPotal find element exception");
+			gotomainpage();
+			EnhancementFromPortal();
+		}
+		                                          
+		
+		
+	}
+	
+	public void DNISFilterNewLook()
+	{
+		TrendReport();
+		WebElement DNIS;
+		Select select;
+		
+		try{
+			
+			DNIS = driver.findElement(By.id("PARAM_DNIS"));
+			select = new Select(DNIS);
+			WebElement firstOption = select.getFirstSelectedOption();
+			
+			if (firstOption.getText().equals("All"))
+			{
+				List<WebElement> allop = select.getOptions();
+				for (WebElement option : allop) { //iterate over the options
+				    logger.info(option.getAttribute("bgcolor"));
+				}
+				}
+		} catch (NoSuchElementException e)
+		{
+			gotomainpage();
+			DNISFilterNewLook();
+		}
+		
+		
+			
+		
+		driver.quit();
+		
+	}
+	
 	//	ODI6.x-662:Time step hour selection started"
 	public void daySelection()
 	{
 		TrendReport();
-		
+			
 		WebElement timeRange = driver.findElement(By.id("date_range"));
 		Select select = new Select(timeRange);
 		select.selectByValue("");
@@ -105,31 +184,43 @@ public class Timestep extends Mainpage {
 	public void weekSelection()
 	{
 		TrendReport();
+		try{			
 		
-		WebElement timeRange = driver.findElement(By.id("date_range"));
-		Select select = new Select(timeRange);
-		select.selectByValue("l30d");
+			WebElement timeRange = driver.findElement(By.id("date_range"));
+			Select select = new Select(timeRange);
+			select.selectByValue("l30d");
 		
-		WebElement timesteps = driver.findElement(By.id("PARAM_TIME_STEP"));
-		timesteps.click();
+			WebElement timesteps = driver.findElement(By.id("PARAM_TIME_STEP"));
+			timesteps.click();
+			
+			select = new Select(timesteps); 
+			select.selectByValue("WEEK");
+			
+			submit.click();
+		} catch (NoSuchElementException e)
+		{
+			gotomainpage();
+			weekSelection();
+		}
 		
-		select = new Select(timesteps); 
-		select.selectByValue("WEEK");
-		
-		submit.click();
-		
-		new WebDriverWait(driver, 10).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("reportContent"));
-		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("CrystalViewercridreportpage")));
 		try{
 			
+			new WebDriverWait(driver, 10).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("reportContent"));
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("CrystalViewercridreportpage")));
 			WebElement week = driver.findElement(By.xpath("//*[text()='Week']"));
 			
 			ReportFile.addTestCase("ODI6.x-664:Time step week selection started", "ODI6.x-664:Time step week selection started => succeed");
 		}
 		catch(NoSuchElementException e)
 		{
-		ReportFile.addTestCase("ODI6.x-664:Time step week selection started", "ODI6.x-664:Time step week selection started => fail");
+			ReportFile.addTestCase("ODI6.x-664:Time step week selection started", "ODI6.x-664:Time step week selection started => fail");
+		} catch(TimeoutException  e)
+		{
+			driver.switchTo().defaultContent();
+			gotomainpage();
+			weekSelection();
 		}
+		
 		
 		driver.switchTo().defaultContent();
 		ReportFile.WriteToFile();
@@ -142,6 +233,8 @@ public class Timestep extends Mainpage {
 		TrendReport();
 		
 		setTime("3 months");
+		
+		driver.findElement(By.id("PARAM_START_DATE_label")).click();
 		
 		WebElement timesteps = driver.findElement(By.id("PARAM_TIME_STEP"));
 		timesteps.click();
@@ -176,6 +269,7 @@ public class Timestep extends Mainpage {
 		
 		setTime("1 year");
 	
+		driver.findElement(By.id("PARAM_START_DATE_label")).click();
 		
 		WebElement timesteps = driver.findElement(By.id("PARAM_TIME_STEP"));
 		timesteps.click();
@@ -209,6 +303,8 @@ public class Timestep extends Mainpage {
 		TrendReport();
 		
 		setTime("2 years");
+		
+		driver.findElement(By.id("PARAM_START_DATE_label")).click();
 		
 		WebElement timesteps = driver.findElement(By.id("PARAM_TIME_STEP"));
 		timesteps.click();
@@ -248,6 +344,8 @@ public class Timestep extends Mainpage {
 		ArrayList<Date> Weeklist = new ArrayList<Date>();	
 		
 		setTime("3 months");
+		
+		driver.findElement(By.id("PARAM_START_DATE_label")).click();
 		
 		WebElement timesteps = driver.findElement(By.id("PARAM_TIME_STEP"));
 		timesteps.click();
@@ -424,6 +522,8 @@ public class Timestep extends Mainpage {
 	
 		setTime("1 year");
 		
+		driver.findElement(By.id("PARAM_START_DATE_label")).click();
+		
 		WebElement timesteps = driver.findElement(By.id("PARAM_TIME_STEP"));
 		timesteps.click();
 		
@@ -501,6 +601,8 @@ public class Timestep extends Mainpage {
 	
 		setTime("13 months");
 		
+		driver.findElement(By.id("PARAM_START_DATE_label")).click();
+		
 		WebElement timesteps = driver.findElement(By.id("PARAM_TIME_STEP"));
 		timesteps.click();
 		
@@ -568,12 +670,7 @@ public class Timestep extends Mainpage {
 		gotomainpage();
 		
 	}
-	
-	
-	
-	
-	
-	
+		
 	public void yearSelectionSorting()
 	{
 		TrendReport();
@@ -582,6 +679,8 @@ public class Timestep extends Mainpage {
 		ArrayList<Date> Weeklist = new ArrayList<Date>();	
 	
 		setTime("3 years");
+		
+		driver.findElement(By.id("PARAM_START_DATE_label")).click();
 		
 		WebElement timesteps = driver.findElement(By.id("PARAM_TIME_STEP"));
 		timesteps.click();
