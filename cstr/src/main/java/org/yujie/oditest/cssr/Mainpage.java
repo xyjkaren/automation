@@ -83,7 +83,7 @@ public class Mainpage {
 		
 		try{
 					
-			WebElement OnDemandInsight = new WebDriverWait(driver,5).until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[5]/div[2]/div/div[2]/ul/li[4]/a")));
+			WebElement OnDemandInsight = new WebDriverWait(driver,5).until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'On Demand Insight')]")));
 			//actionClick(OnDemandInsight);
 			OnDemandInsight.click();
 		

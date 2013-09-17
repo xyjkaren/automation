@@ -71,6 +71,60 @@ public class Timestep extends Mainpage {
 	}
 	
 	//	ODI6.x-646: CSTR - Search
+	public void Search()
+	{
+		TrendReport();
+		
+		try {
+			WebElement timeRange = driver.findElement(By.id("date_range"));
+			Select select = new Select(timeRange);
+			select.selectByValue("l7d");
+			
+			WebElement timesteps = driver.findElement(By.id("PARAM_TIME_STEP"));
+			timesteps.click();
+			
+			select = new Select(timesteps); 
+			select.selectByValue("DAY");
+			
+			submit.click();
+		} catch (NoSuchElementException e)
+		{
+			gotomainpage();
+			Search();
+		}
+		
+		new WebDriverWait(driver, 10).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("reportContent"));
+		WebElement reportpage = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("CrystalViewercridreportpage")));
+		
+		
+		List<WebElement> week = reportpage.findElements(By.tagName("div"));
+		int startpos  = 0, endpos = 0;		
+		
+		for (int i = 0;i < week.size(); i++)
+		{				
+			logger.info(week.get(i).getText() + "    " + i);
+			if (week.get(i).getText().equals("Day"))
+				startpos = i;
+			else if(week.get(i).getText().equals("Additional Filters:")) {
+				endpos = i;
+				break;
+			}
+			else if(week.get(i).getText().equals("[Note: week of end date is partial.]")) {
+				endpos = i; 
+				break;
+			}
+			else if(week.get(i).getText().equals("[Note: weeks  of start date and end date are partial.]")) {
+				endpos = i;
+				break;
+			}
+		}
+		
+		startpos +=43;
+		
+		logger.info("start" + startpos);
+		
+	}
+	
 	
 	//	ODI6.x-650:Report look'n Feel: Enhancement from Portal
 	public void EnhancementFromPortal()
@@ -98,19 +152,24 @@ public class Timestep extends Mainpage {
 		try{
 			
 			new WebDriverWait(driver, 10).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("reportContent"));
-			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("CrystalViewercridreportpage")));
+			WebElement reportpage = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("CrystalViewercridreportpage")));
 			
-			WebElement header = driver.findElement(By.xpath("//*[text() = '']"));
-			//header.getCssValue(arg0)
+			WebElement header = reportpage.findElement(By.xpath("//*[contains(text(),'Statistics')]"));
+						
+			logger.info(header.getCssValue("font-family"));
 			
 		} catch(TimeoutException e)
 		{
 			logger.info("enhancementFromPotal find element exception");
 			gotomainpage();
 			EnhancementFromPortal();
+		} catch (NoSuchElementException  e)
+		{
+			logger.info("report text is not found");
+			ReportFile.addTestCase("ODI6.x-650:Report look'n Feel: Enhancement from Portal", "ODI6.x-650:Report look'n Feel: Enhancement from Portal => fail");
 		}
 		                                          
-		
+		driver.quit();
 		
 	}
 	
@@ -138,10 +197,7 @@ public class Timestep extends Mainpage {
 			gotomainpage();
 			DNISFilterNewLook();
 		}
-		
-		
-			
-		
+				
 		driver.quit();
 		
 	}
@@ -254,7 +310,7 @@ public class Timestep extends Mainpage {
 		}
 		catch(NoSuchElementException e)
 		{
-		ReportFile.addTestCase("ODI6.x-664:Time step week selection started", "ODI6.x-664:Time step month selection started => fail");
+			ReportFile.addTestCase("ODI6.x-664:Time step week selection started", "ODI6.x-664:Time step month selection started => fail");
 		}
 		
 		driver.switchTo().defaultContent();
@@ -364,18 +420,27 @@ public class Timestep extends Mainpage {
 			int startpos  = 0, endpos = 0;		
 			
 			for (int i = 0;i < week.size(); i++)
-			{
+			{				
+				//logger.info(week.get(i).getText() + "    " + i);
 				if (week.get(i).getText().equals("Week"))
 					startpos = i;
-				else if(week.get(i).getText().equals("Additional Filters:"))
+				else if(week.get(i).getText().equals("Additional Filters:")) {
 					endpos = i;
+					break;
+				}
+				else if(week.get(i).getText().equals("[Note: week of end date is partial.]")) {
+					endpos = i; 
+					break;
+				}
+				else if(week.get(i).getText().equals("[Note: weeks  of start date and end date are partial.]")) {
+					endpos = i;
+					break;
+				}
 			}
-			startpos += 35;
-			
-			for (;startpos < endpos; startpos += 15)
+			startpos += 45;
+			for (;startpos < endpos; startpos += 19)
 			{
-				logger.info(week.get(startpos).getText());
-				String weeksub = week.get(startpos).getText().substring(0, 10);
+				String weeksub = week.get(startpos).getText().substring(0, 9);
 				try {
 					Date weekdate = format.parse(weeksub);
 					Weeklist.add(weekdate);
@@ -387,14 +452,17 @@ public class Timestep extends Mainpage {
 				
 			}
 			
+			boolean result = true;
 			for (int i = 0; i < Weeklist.size() - 1; i ++)
 			{
-				if (Weeklist.get(i).before(Weeklist.get(i+1)))
-					ReportFile.addTestCase("ODI6.x-670:Time step week sorting", "ODI6.x-670:Time step week sorting => succeed");
-				else
-					ReportFile.addTestCase("ODI6.x-670:Time step week sorting", "ODI6.x-670:Time step week sorting => failed");
-					
+				if (Weeklist.get(i).after(Weeklist.get(i+1)))
+					result = false;
 			}
+			
+			if (result == true)
+				ReportFile.addTestCase("ODI6.x-670:Time step week sorting", "ODI6.x-670:Time step week sorting => succeed");
+			else
+				ReportFile.addTestCase("ODI6.x-670:Time step week sorting", "ODI6.x-670:Time step week sorting => fail");
 		
 		}
 			
@@ -411,7 +479,7 @@ public class Timestep extends Mainpage {
 		driver.switchTo().defaultContent();
 		ReportFile.WriteToFile();
 		gotomainpage();
-		
+		driver.quit();
 	}
 	
 	public void daySelectionSorting()
@@ -560,19 +628,21 @@ public class Timestep extends Mainpage {
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-					driver.quit();
 				}
 				
 			}
 			
+			boolean result = true;
 			for (int i = 0; i < Weeklist.size() - 1; i ++)
 			{
-				if (Weeklist.get(i).before(Weeklist.get(i+1)))
-					ReportFile.addTestCase("ODI6.x-670:Time step day sorting", "ODI6.x-670:Time step month sorting => succeed");
-				else
-					ReportFile.addTestCase("ODI6.x-670:Time step day sorting", "ODI6.x-670:Time step month sorting => failed");
-					
+				if (Weeklist.get(i).after(Weeklist.get(i+1)))
+					result = false;
 			}
+			
+			if (result == true)
+				ReportFile.addTestCase("ODI6.x-670:Time step week sorting", "ODI6.x-670:Time step month sorting => succeed");
+			else
+				ReportFile.addTestCase("ODI6.x-670:Time step week sorting", "ODI6.x-670:Time step month sorting => fail");
 		
 		}
 			
@@ -644,14 +714,17 @@ public class Timestep extends Mainpage {
 				
 			}
 			
+			boolean result = true;
 			for (int i = 0; i < Weeklist.size() - 1; i ++)
 			{
-				if (Weeklist.get(i).before(Weeklist.get(i+1)))
-					ReportFile.addTestCase("ODI6.x-670:Time step day sorting", "ODI6.x-670:Time step quarter sorting => succeed");
-				else
-					ReportFile.addTestCase("ODI6.x-670:Time step day sorting", "ODI6.x-670:Time step quarter sorting => failed");
-					
+				if (Weeklist.get(i).after(Weeklist.get(i+1)))
+					result = false;
 			}
+			
+			if (result == true)
+				ReportFile.addTestCase("ODI6.x-670:Time step week sorting", "ODI6.x-670:Time step quarter sorting => succeed");
+			else
+				ReportFile.addTestCase("ODI6.x-670:Time step week sorting", "ODI6.x-670:Time step quarter sorting => fail");
 		
 		}
 			
@@ -1040,6 +1113,9 @@ public class Timestep extends Mainpage {
 		}
 				
 		startdate.clear();
+		
+		
+		
 		Alert alert = driver.switchTo().alert();
 		alert.dismiss();
 		if(period.equals("1 month"))
