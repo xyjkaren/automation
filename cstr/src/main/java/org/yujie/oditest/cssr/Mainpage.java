@@ -1,11 +1,17 @@
 package org.yujie.oditest.cssr;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import net.sourceforge.htmlunit.corejs.javascript.tools.debugger.Main;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
@@ -29,7 +35,11 @@ public class Mainpage {
 	protected UserInfo user;
 	protected WebElement submit;
 	public static WriteXmlFile ReportFile;
-
+	public WebElement startdate;
+	public WebElement enddate;
+	public WebElement startdatetime;
+	public WebElement enddatetime;
+	public DateFormat format;
 	
 	public Mainpage()
 	{
@@ -129,6 +139,87 @@ public class Mainpage {
 	{
 		Actions mover = new Actions(driver);
 		mover.moveToElement(element).click(element).perform();
+	}
+	
+	public void setTime (String period)
+	{
+		startdate = driver.findElement(By.id("PARAM_START_DATE"));
+		enddate = driver.findElement(By.id("PARAM_END_DATE"));
+		String enddateValue = enddate.getAttribute("value");
+
+		Calendar cal = Calendar.getInstance();
+		format = new SimpleDateFormat("MM/dd/yyyy");
+		try {
+			Date date = format.parse(enddateValue);
+			cal.setTime(date);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
+		startdate.clear();
+
+		removeAlert();
+		if(period.equals("1 month"))
+		{
+			cal.add(Calendar.MONTH, -1);
+			String starttime = format.format(cal.getTime());
+			startdate.sendKeys(starttime);
+		}
+		else if(period.equals("3 months"))
+		{
+			cal.add(Calendar.MONTH, -3);
+			String starttime = format.format(cal.getTime());
+			startdate.sendKeys(starttime);
+		}
+		else if(period.equals("1 year"))
+		{
+			cal.add(Calendar.YEAR, -1);
+			String starttime = format.format(cal.getTime());
+			startdate.sendKeys(starttime);
+		}
+		else if(period.equals("13 months"))
+		{
+			cal.add(Calendar.MONTH, -13);
+			String starttime = format.format(cal.getTime());
+			startdate.sendKeys(starttime);
+		}
+		else if(period.equals("2 years"))
+		{
+			cal.add(Calendar.YEAR, -2);
+			String starttime = format.format(cal.getTime());
+			startdate.sendKeys(starttime);
+		}
+		else if (period.equals("3 years"))
+		{
+			cal.add(Calendar.YEAR, -3);
+			String starttime = format.format(cal.getTime());
+			startdate.sendKeys(starttime);
+		}		
+		else if (period.equals("random"))
+		{
+			
+			cal.add(Calendar.MONTH, -1);
+			String starttime = format.format(cal.getTime());
+			startdate.sendKeys(starttime);
+			
+			enddate.clear();
+			
+			removeAlert();
+			
+			cal.add(Calendar.HOUR, 24);
+			String endtime = format.format(cal.getTime());
+			enddate.sendKeys(endtime);
+			
+			
+		}
+	}
+	
+	public void removeAlert() {
+		
+		Alert alert = driver.switchTo().alert();
+		alert.dismiss();
+		
 	}
 	
 	public static void main(String[] args)

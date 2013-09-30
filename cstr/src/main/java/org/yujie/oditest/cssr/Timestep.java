@@ -1,6 +1,7 @@
 package org.yujie.oditest.cssr;
 
 import java.text.DateFormat;
+import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.SendKeysAction;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -29,11 +31,8 @@ import com.google.common.collect.Sets.SetView;
 public class Timestep extends Mainpage {
 	
 	private String timestepTestresult;
-	private DateFormat format;
-	private WebElement startdate;
-	private WebElement enddate;
-	private WebElement startdatetime;
-	private WebElement enddatetime;
+	
+	
 	
 	
 	public Timestep()
@@ -146,7 +145,7 @@ public class Timestep extends Mainpage {
 		} catch (NoSuchElementException e)
 		{
 			gotomainpage();
-			weekSelection();
+			EnhancementFromPortal();
 		}
 		
 		try{
@@ -156,22 +155,29 @@ public class Timestep extends Mainpage {
 			
 			WebElement header = reportpage.findElement(By.xpath("//*[contains(text(),'Statistics')]"));
 						
-			logger.info(header.getCssValue("font-family"));
+			if(header.getCssValue("font-family").equals("trebuchet ms"))
+				ReportFile.addTestCase("ODI6.x-650:Report look'n Feel: Enhancement from Portal", "Verify report text should be change font Arial to  font Trebuchet MS (with various) for all text in the reports => succeed");
+			else 
+				ReportFile.addTestCase("ODI6.x-650:Report look'n Feel: Enhancement from Portal", "Verify report text should be change font Arial to  font Trebuchet MS (with various) for all text in the reports => fail");
+			
+			if(header.getCssValue("transparent").equals("transparent"))
+				ReportFile.addTestCase("ODI6.x-650:Report look'n Feel: Enhancement from Portal", "Verify use the gradient as the background of the report header => succeed");
+			else 
+				ReportFile.addTestCase("ODI6.x-650:Report look'n Feel: Enhancement from Portal", "Verify use the gradient as the background of the report header => fail");
+
 			
 		} catch(TimeoutException e)
 		{
 			logger.info("enhancementFromPotal find element exception");
 			gotomainpage();
 			EnhancementFromPortal();
-		} catch (NoSuchElementException  e)
-		{
-			logger.info("report text is not found");
-			ReportFile.addTestCase("ODI6.x-650:Report look'n Feel: Enhancement from Portal", "ODI6.x-650:Report look'n Feel: Enhancement from Portal => fail");
-		}
+		} 
 		                                          
 		driver.quit();
 		
 	}
+
+	
 	
 	public void DNISFilterNewLook()
 	{
@@ -184,6 +190,7 @@ public class Timestep extends Mainpage {
 			DNIS = driver.findElement(By.id("PARAM_DNIS"));
 			select = new Select(DNIS);
 			WebElement firstOption = select.getFirstSelectedOption();
+			
 			
 			if (firstOption.getText().equals("All"))
 			{
@@ -203,6 +210,41 @@ public class Timestep extends Mainpage {
 	}
 	
 	//	ODI6.x-662:Time step hour selection started"
+	
+	public void hourSelection()
+	{
+		TrendReport();
+		
+		setTime("random");
+		
+		driver.findElement(By.id("PARAM_START_DATE_label")).click();
+		
+		WebElement timesteps = driver.findElement(By.id("PARAM_TIME_STEP"));
+		timesteps.click();
+		
+		Select select = new Select(timesteps); 
+		select.selectByValue("HOUR");
+		
+		submit.click();
+		
+		new WebDriverWait(driver, 10).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("reportContent"));
+		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("CrystalViewercridreportpage")));
+		try{
+			
+			WebElement week = driver.findElement(By.xpath("//*[text()='Hour']"));
+			
+			ReportFile.addTestCase("ODI6.x-664:Time step week selection started", "ODI6.x-664:Time step month selection started => succeed");
+		}
+		catch(NoSuchElementException e)
+		{
+			ReportFile.addTestCase("ODI6.x-664:Time step week selection started", "ODI6.x-664:Time step month selection started => fail");
+		}
+		
+		driver.switchTo().defaultContent();
+		ReportFile.WriteToFile();
+		gotomainpage();
+	}
+	
 	public void daySelection()
 	{
 		TrendReport();
@@ -224,12 +266,12 @@ public class Timestep extends Mainpage {
 		try{
 	
 		WebElement Hour = driver.findElement(By.xpath("//*[text()='Day']"));
-		ReportFile.addTestCase("ODI6.x-662:Time step hour selection started", "ODI6.x-662:Time step hour selection started => succeed");
+		ReportFile.addTestCase("ODI6.x-662:Time step day selection started", "ODI6.x-662:Time step day selection started => succeed");
 
 		}
 		catch(NoSuchElementException e)
 		{
-			ReportFile.addTestCase("ODI6.x-662:Time step hour selection started", "ODI6.x-662:Time step hour selection started => fail");
+			ReportFile.addTestCase("ODI6.x-662:Time step day selection started", "ODI6.x-662:Time step day selection started => fail");
 		}
 		
 		driver.switchTo().defaultContent();
@@ -390,7 +432,129 @@ public class Timestep extends Mainpage {
 	}
 	
 	
-	
+	public void hourSelectionSorting() {
+		TrendReport();
+		
+		List<WebElement> week;
+		ArrayList<Date> Weeklist = new ArrayList<Date>();	
+		DateFormat hourformat = new SimpleDateFormat("HH:MM");
+
+		
+		startdate = driver.findElement(By.id("PARAM_START_DATE"));
+		enddate = driver.findElement(By.id("PARAM_END_DATE"));
+		
+		
+		Calendar cal = Calendar.getInstance();
+		format = new SimpleDateFormat("MM/dd/yyyy");
+		
+		try {
+			Date date = format.parse("09/24/2013");
+			cal.setTime(date);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	//	setTime("9/24");
+		
+		startdate.clear();
+		removeAlert();
+		
+		startdate.sendKeys("09/24/2013");
+		driver.findElement(By.id("PARAM_START_DATE_label")).click();
+
+		enddate.clear();
+		removeAlert();
+		enddate.sendKeys("09/25/2013");
+		
+			
+		driver.findElement(By.id("PARAM_START_DATE_label")).click();
+		
+		WebElement timesteps = driver.findElement(By.id("PARAM_TIME_STEP"));
+		timesteps.click();
+		
+		Select select = new Select(timesteps); 
+		select.selectByValue("HOUR");
+		
+		submit.click();
+		
+		try{	
+			new WebDriverWait(driver, 10).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("reportContent"));
+			WebElement reportpage = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("CrystalViewercridreportpage")));
+			
+			
+			week = reportpage.findElements(By.tagName("div"));
+			int startpos  = 0, endpos = 0;		
+			
+			for (int i = 0;i < week.size(); i++)
+			{				
+				//logger.info(week.get(i).getText() + "    " + i);
+				if (week.get(i).getText().equals("Hour"))
+					startpos = i; 
+				else if(week.get(i).getText().equals("Additional Filters:")) {
+					{endpos = i; logger.info("endpos"+ endpos);}
+					break;
+				}
+				else if(week.get(i).getText().equals("[Note: week of end date is partial.]")) {
+					endpos = i; 
+					break;
+				}
+				else if(week.get(i).getText().equals("[Note: weeks  of start date and end date are partial.]")) {
+					endpos = i;
+					break;
+				}
+				else if(week.get(i).getText().contains("Page 1")) {
+					endpos = i;
+					break;
+				}
+					
+			}
+			startpos += 45;
+
+			for (;startpos < endpos; startpos += 19)
+			{
+
+				String weeksub = week.get(startpos).getText().substring(0, 5);
+				try {
+					Date weekdate = hourformat.parse(weeksub);
+					Weeklist.add(weekdate);
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					driver.quit();
+				}
+				
+			}
+			
+			boolean result = true;
+			for (int i = 0; i < Weeklist.size() - 1; i ++)
+			{	
+				if (Weeklist.get(i).after(Weeklist.get(i+1)))
+					result = false;
+			}
+			
+			if (result == true)
+				ReportFile.addTestCase("ODI6.x-670:Time step week sorting", "ODI6.x-670:Time step hour sorting => succeed");
+			else
+				ReportFile.addTestCase("ODI6.x-670:Time step week sorting", "ODI6.x-670:Time step hour sorting => fail");
+		
+		}
+			
+		catch(NoSuchElementException e)
+		{
+			logger.info("can't find element");
+		}	
+		catch(TimeoutException e) 
+		{
+			gotomainpage();
+			hourSelectionSorting();
+		}
+		
+		driver.switchTo().defaultContent();
+		ReportFile.WriteToFile();
+		gotomainpage();
+		driver.quit();
+	}
 	
 	public void weekSelectionSorting()
 	{
@@ -679,7 +843,15 @@ public class Timestep extends Mainpage {
 		Select select = new Select(timesteps); 
 		select.selectByValue("QUARTER");
 		
-		submit.click();
+		submit.click(); 
+		
+		if (checkifalert() == true)
+		{
+			ReportFile.addTestCase("ODI6.x-670:Time step week sorting", "ODI6.x-670:Time step quarter sorting => fail");
+			ReportFile.WriteToFile();
+			gotomainpage();
+		}
+		
 		
 		try{	
 			new WebDriverWait(driver, 10).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("reportContent"));
@@ -762,6 +934,13 @@ public class Timestep extends Mainpage {
 		select.selectByValue("YEAR");
 		
 		submit.click();
+		
+		if (checkifalert() == true)
+		{
+			ReportFile.addTestCase("ODI6.x-670:Time step week sorting", "ODI6.x-670:Time step year sorting => fail");
+			ReportFile.WriteToFile();
+			gotomainpage();
+		}
 		
 		try{	
 			new WebDriverWait(driver, 10).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("reportContent"));
@@ -872,8 +1051,7 @@ public class Timestep extends Mainpage {
 		}
 				
 		startdate.clear();
-		Alert alert = driver.switchTo().alert();
-		alert.dismiss();
+		removeAlert();
 				
 		if (period.equals("one hour"))
 			{
@@ -888,8 +1066,8 @@ public class Timestep extends Mainpage {
 				startdatetime.sendKeys(starttimes[1]);
 				
 				enddate.clear();
-				Alert alert2 = driver.switchTo().alert();
-				alert2.dismiss();
+				removeAlert();
+				
 				
 				enddate.sendKeys(endblock[0]);
 				
@@ -1095,65 +1273,17 @@ public class Timestep extends Mainpage {
 		//driver.quit();
 	}
 
-	//set start time with specific time range
-	public void setTime (String period)
+	public boolean checkifalert()
 	{
-		startdate = driver.findElement(By.id("PARAM_START_DATE"));
-		enddate = driver.findElement(By.id("PARAM_END_DATE"));
-		String enddateValue = enddate.getAttribute("value");
-
-		Calendar cal = Calendar.getInstance();
-		format = new SimpleDateFormat("MM/dd/yyyy");
 		try {
-			Date date = format.parse(enddateValue);
-			cal.setTime(date);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			driver.switchTo().alert().dismiss();
+			
+			return true;
 		}
-				
-		startdate.clear();
-		
-		
-		
-		Alert alert = driver.switchTo().alert();
-		alert.dismiss();
-		if(period.equals("1 month"))
+		catch(NoAlertPresentException ex)
 		{
-			cal.add(Calendar.MONTH, -1);
-			String starttime = format.format(cal.getTime());
-			startdate.sendKeys(starttime);
+			return false;
 		}
-		else if(period.equals("3 months"))
-		{
-			cal.add(Calendar.MONTH, -3);
-			String starttime = format.format(cal.getTime());
-			startdate.sendKeys(starttime);
-		}
-		else if(period.equals("1 year"))
-		{
-			cal.add(Calendar.YEAR, -1);
-			String starttime = format.format(cal.getTime());
-			startdate.sendKeys(starttime);
-		}
-		else if(period.equals("13 months"))
-		{
-			cal.add(Calendar.MONTH, -13);
-			String starttime = format.format(cal.getTime());
-			startdate.sendKeys(starttime);
-		}
-		else if(period.equals("2 years"))
-		{
-			cal.add(Calendar.YEAR, -2);
-			String starttime = format.format(cal.getTime());
-			startdate.sendKeys(starttime);
-		}
-		else if (period.equals("3 years"))
-		{
-			cal.add(Calendar.YEAR, -3);
-			String starttime = format.format(cal.getTime());
-			startdate.sendKeys(starttime);
-		}		
 	}
 	
 }

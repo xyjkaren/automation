@@ -115,7 +115,7 @@ public class URLStatusChecker {
 		WebDriver driver = new FirefoxDriver();
 		try {
 			URLStatusChecker url = new URLStatusChecker(driver);
-			url.setURIToCheck("wwww.google.com");
+			url.setURIToCheck("http://www.google.com");
 			url.setHttpRequestMethod(RequestMethod.GET);
 			logger.info(""+url.getHttpStatusCode());
 		
