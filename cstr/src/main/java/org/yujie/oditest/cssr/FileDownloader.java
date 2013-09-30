@@ -21,9 +21,10 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.cookie.BasicClientCookie;
 import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.BasicHttpContext;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,6 +35,13 @@ public class FileDownloader extends Mainpage{
 	private boolean followDirects = true;
 	private boolean mimicWebDriverCookieState = true;
 	private int httpStatusOfLastDownloadAttmpt = 0;
+	
+	public FileDownloader() {
+		this.driver = new FirefoxDriver();
+		logger.info("test before");
+		this.driver.get("http://audacity.sourceforge.net/download/legacy_mac");
+		logger.info("late");
+	}
 	
 	public void followRedirectsWhenDownloading(boolean value) {
 		this.followDirects = value;
@@ -116,17 +124,25 @@ public class FileDownloader extends Mainpage{
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public static void main(String[] args)
+	{
+
+//		FileDownloader test = new FileDownloader();
+//		WebElement downlink = driver.findElement(By.tagName("a"));
+//	
+//		try {
+//			String downloadedFileAbsoluteLocation = test.downloadFile(downlink);
+//			logger.info(downloadedFileAbsoluteLocation);
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	 
+	}
+
 }
+
+
+
+
+

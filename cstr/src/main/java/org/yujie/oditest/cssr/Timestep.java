@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
 
@@ -495,12 +496,8 @@ public class Timestep extends Mainpage {
 					{endpos = i; logger.info("endpos"+ endpos);}
 					break;
 				}
-				else if(week.get(i).getText().equals("[Note: week of end date is partial.]")) {
+				else if(week.get(i).getText().contains("partial")) {
 					endpos = i; 
-					break;
-				}
-				else if(week.get(i).getText().equals("[Note: weeks  of start date and end date are partial.]")) {
-					endpos = i;
 					break;
 				}
 				else if(week.get(i).getText().contains("Page 1")) {
@@ -592,14 +589,15 @@ public class Timestep extends Mainpage {
 					endpos = i;
 					break;
 				}
-				else if(week.get(i).getText().equals("[Note: week of end date is partial.]")) {
+				else if(week.get(i).getText().contains("partial")) {
 					endpos = i; 
 					break;
 				}
-				else if(week.get(i).getText().equals("[Note: weeks  of start date and end date are partial.]")) {
+				else if(week.get(i).getText().contains("Page 1")) {
 					endpos = i;
 					break;
 				}
+				
 			}
 			startpos += 45;
 			for (;startpos < endpos; startpos += 19)
@@ -659,7 +657,7 @@ public class Timestep extends Mainpage {
 		
 		enddate = driver.findElement(By.id("PARAM_END_DATE"));
 		String enddateValue = enddate.getAttribute("value");
-		format = new SimpleDateFormat("MM/dd/yyyy");
+		format = new SimpleDateFormat("yyyy/MM/dd");
 		
 		Calendar cal = Calendar.getInstance();
 		try {
@@ -670,7 +668,6 @@ public class Timestep extends Mainpage {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-
 		
 		WebElement timesteps = driver.findElement(By.id("PARAM_TIME_STEP"));
 		timesteps.click();
@@ -682,30 +679,31 @@ public class Timestep extends Mainpage {
 		
 		try{	
 			new WebDriverWait(driver, 10).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("reportContent"));
-			WebElement reportpage = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("CrystalViewercridreportpage")));
-			
-			
+			WebElement reportpage = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("CrystalViewercridreportpage")));		
 			week = reportpage.findElements(By.tagName("div"));
 			int startpos  = 0, endpos = 0;		
 			
 			for (int i = 0;i < week.size(); i++)
-			{
+			{				
 				if (week.get(i).getText().equals("Day"))
-					{startpos = i;logger.info("1"+i);}
-				else if (week.get(i).getText().equals("2013/08/13"))
-				{startpos = i;logger.info("2"+i);}
-				else if (week.get(i).getText().equals("2013/08/20"))
-				{startpos = i;logger.info("3"+i);}
-				else if (week.get(i).getText().equals("2013/08/22"))
-				{startpos = i;logger.info("4"+i);}
-				else if(week.get(i).getText().equals("Additional Filters:"))
-					{endpos = i; logger.info("5"+i);}
+					startpos = i;
+				else if(week.get(i).getText().equals("Additional Filters:")) {
+					endpos = i;
+					break;
+				}
+				else if(week.get(i).getText().contains("partial")) {
+					endpos = i; 
+					break;
+				}
+				else if(week.get(i).getText().contains("Page 1")) {
+					endpos = i;
+					break;
+				}
 			}
-			startpos += 35;
+			startpos += 43;
 			
-			for (;startpos < endpos; startpos += 15)
+			for (;startpos < endpos; startpos += 17)
 			{
-				logger.info(week.get(startpos).getText());
 				String weeksub = week.get(startpos).getText().substring(0, 10);
 				try {
 					Date weekdate = format.parse(weeksub);
@@ -752,6 +750,7 @@ public class Timestep extends Mainpage {
 		List<WebElement> week;
 		ArrayList<Date> Weeklist = new ArrayList<Date>();	
 	
+		DateFormat formatmonth = new SimpleDateFormat("MMM-yy");
 		setTime("1 year");
 		
 		driver.findElement(By.id("PARAM_START_DATE_label")).click();
@@ -765,29 +764,40 @@ public class Timestep extends Mainpage {
 		submit.click();
 		
 		try{	
-			new WebDriverWait(driver, 10).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("reportContent"));
-			WebElement reportpage = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("CrystalViewercridreportpage")));
+			new WebDriverWait(driver, 5).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("reportContent"));
+			WebElement reportpage = new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.id("CrystalViewercridreportpage")));
 			
 			
 			week = reportpage.findElements(By.tagName("div"));
 			int startpos  = 0, endpos = 0;		
 			
 			for (int i = 0;i < week.size(); i++)
-			{
+			{				
+				//logger.info(week.get(i).getText() + "    " + i);
 				if (week.get(i).getText().equals("Month"))
 					startpos = i;
-				else if(week.get(i).getText().equals("Additional Filters:"))
+				else if(week.get(i).getText().equals("Additional Filters:")) {
+					endpos = i;
+					break;
+				}
+				else if(week.get(i).getText().contains("partial")) {
 					endpos = i; 
+					break;
+				}		
+				else if(week.get(i).getText().contains("Page 1")) {
+					endpos = i;
+					break;
+				}
 			}
 			
-			startpos += 35;
+			startpos += 43;
 			
-			for (;startpos < endpos; startpos += 15)
+			for (;startpos < endpos; startpos += 17)
 			{
 				logger.info(week.get(startpos).getText());
-				String weeksub = week.get(startpos).getText().substring(0, 10);
+				String weeksub = week.get(startpos).getText().substring(0, 6);
 				try {
-					Date weekdate = format.parse(weeksub);
+					Date weekdate = formatmonth.parse(weeksub);
 					Weeklist.add(weekdate);
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
@@ -817,7 +827,7 @@ public class Timestep extends Mainpage {
 		catch(TimeoutException e) 
 		{
 			gotomainpage();
-			weekSelectionSorting();
+			monthSelectionSorting();
 		}
 		
 		driver.switchTo().defaultContent();
@@ -832,9 +842,11 @@ public class Timestep extends Mainpage {
 		
 		List<WebElement> week;
 		ArrayList<Date> Weeklist = new ArrayList<Date>();	
-		boolean result = false;
+		HashMap<Date, String> quarterlist = new HashMap<Date, String>();
+		DateFormat quarterformat = new SimpleDateFormat("yyyy");
 		
-		setTime("13 months");
+		boolean result = false;
+		setTime("1 year");
 		
 		driver.findElement(By.id("PARAM_START_DATE_label")).click();
 		
@@ -853,8 +865,7 @@ public class Timestep extends Mainpage {
 			gotomainpage();
 			return result;
 		}
-		
-		
+			
 		try{	
 			new WebDriverWait(driver, 10).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("reportContent"));
 			WebElement reportpage = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("CrystalViewercridreportpage")));
@@ -864,21 +875,32 @@ public class Timestep extends Mainpage {
 			int startpos  = 0, endpos = 0;		
 			
 			for (int i = 0;i < week.size(); i++)
-			{
+			{				
+				//logger.info(week.get(i).getText() + "    " + i);
 				if (week.get(i).getText().equals("Quarter"))
 					startpos = i;
-				else if(week.get(i).getText().equals("Additional Filters:"))
+				else if(week.get(i).getText().equals("Additional Filters:")) {
+					endpos = i;
+					break;
+				}
+				else if(week.get(i).getText().contains("partial")) {
 					endpos = i; 
+					break;
+				}
+				else if(week.get(i).getText().contains("Page 1")) {
+					endpos = i;
+					break;
+				}
 			}
+			startpos += 43;
 			
-			startpos += 35;
-			
-			for (;startpos < endpos; startpos += 15)
+			for (;startpos < endpos; startpos += 17)
 			{
 				logger.info(week.get(startpos).getText());
-				String weeksub = week.get(startpos).getText().substring(0, 10);
+				String weeksub = week.get(startpos).getText().substring(0, 4);
 				try {
-					Date weekdate = format.parse(weeksub);
+					Date weekdate = quarterformat.parse(weeksub);
+					quarterlist.put(weekdate, week.get(startpos).getText());
 					Weeklist.add(weekdate);
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
@@ -893,6 +915,14 @@ public class Timestep extends Mainpage {
 			{
 				if (Weeklist.get(i).after(Weeklist.get(i+1)))
 					result = false;
+				else if (Weeklist.get(i).equals(Weeklist.get(i+1))) {
+					String quarterbefore = quarterlist.get(Weeklist.get(i));
+					String quarterafter =  quarterlist.get(Weeklist.get(i));
+					int before = Integer.parseInt(quarterbefore.substring(quarterbefore.length() - 1));
+					int after = Integer.parseInt(quarterafter.substring(quarterbefore.length() - 1));
+				if (before > after)
+					result = false;
+				}
 			}
 			
 			if (result == true)
@@ -915,6 +945,7 @@ public class Timestep extends Mainpage {
 		driver.switchTo().defaultContent();
 		ReportFile.WriteToFile();
 		gotomainpage();
+		driver.quit();
 		return result;
 		
 	}
@@ -962,9 +993,9 @@ public class Timestep extends Mainpage {
 					endpos = i; 
 			}
 			
-			startpos += 35;
+			startpos += 43;
 			
-			for (;startpos < endpos; startpos += 15)
+			for (;startpos < endpos; startpos += 17)
 			{
 				logger.info(week.get(startpos).getText());
 				String weeksub = week.get(startpos).getText().substring(0, 10);
