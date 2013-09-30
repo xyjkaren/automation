@@ -232,7 +232,7 @@ public class Timestep extends Mainpage {
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("CrystalViewercridreportpage")));
 		try{
 			
-			WebElement week = driver.findElement(By.xpath("//*[text()='Hour']"));
+			WebElement hour = driver.findElement(By.xpath("//*[text()='Hour']"));
 			
 			ReportFile.addTestCase("ODI6.x-664:Time step week selection started", "ODI6.x-664:Time step month selection started => succeed");
 		}
@@ -266,7 +266,7 @@ public class Timestep extends Mainpage {
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("CrystalViewercridreportpage")));
 		try{
 	
-		WebElement Hour = driver.findElement(By.xpath("//*[text()='Day']"));
+		WebElement Day = driver.findElement(By.xpath("//*[text()='Day']"));
 		ReportFile.addTestCase("ODI6.x-662:Time step day selection started", "ODI6.x-662:Time step day selection started => succeed");
 
 		}
@@ -347,7 +347,7 @@ public class Timestep extends Mainpage {
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("CrystalViewercridreportpage")));
 		try{
 			
-			WebElement week = driver.findElement(By.xpath("//*[text()='Month']"));
+			WebElement month = driver.findElement(By.xpath("//*[text()='Month']"));
 			
 			ReportFile.addTestCase("ODI6.x-664:Time step week selection started", "ODI6.x-664:Time step month selection started => succeed");
 		}
@@ -382,7 +382,7 @@ public class Timestep extends Mainpage {
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("CrystalViewercridreportpage")));
 		try{
 			
-			WebElement week = driver.findElement(By.xpath("//*[text()='Quarter']"));
+			WebElement quarter = driver.findElement(By.xpath("//*[text()='Quarter']"));
 			
 			ReportFile.addTestCase("ODI6.x-664:Time step week selection started", "ODI6.x-664:Time step quarter selection started => succeed");
 		}
@@ -397,10 +397,10 @@ public class Timestep extends Mainpage {
 			
 	}
 	
-	public void yearSelection()
+	public boolean yearSelection()
 	{
 		TrendReport();
-		
+		boolean result = false;
 		setTime("2 years");
 		
 		driver.findElement(By.id("PARAM_START_DATE_label")).click();
@@ -413,30 +413,38 @@ public class Timestep extends Mainpage {
 		
 		submit.click();
 		
+		if (checkifalert() == true)
+		{
+			ReportFile.addTestCase("ODI6.x-664:Time step week selection started", "ODI6.x-664:Time step Year selection started => fail");
+			ReportFile.WriteToFile();
+			gotomainpage();
+			return result;
+		}
+		
 		new WebDriverWait(driver, 10).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("reportContent"));
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("CrystalViewercridreportpage")));
 		try{
 			
-			WebElement week = driver.findElement(By.xpath("//*[text()='Year']"));
+			WebElement Year = driver.findElement(By.xpath("//*[text()='Year']"));
 			
 			ReportFile.addTestCase("ODI6.x-664:Time step week selection started", "ODI6.x-664:Time step Year selection started => succeed");
 		}
 		catch(NoSuchElementException e)
 		{
-		ReportFile.addTestCase("ODI6.x-664:Time step week selection started", "ODI6.x-664:Time step Year selection started => failed");
+		ReportFile.addTestCase("ODI6.x-664:Time step week selection started", "ODI6.x-664:Time step Year selection started => fail");
 		}
 		
 		driver.switchTo().defaultContent();
 		ReportFile.WriteToFile();
 		gotomainpage();
-			
+		return result;	
 	}
 	
 	
 	public void hourSelectionSorting() {
 		TrendReport();
 		
-		List<WebElement> week;
+		List<WebElement> hour;
 		ArrayList<Date> Hourlist = new ArrayList<Date>();	
 		DateFormat hourformat = new SimpleDateFormat("HH:MM");
 
@@ -484,23 +492,23 @@ public class Timestep extends Mainpage {
 			WebElement reportpage = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("CrystalViewercridreportpage")));
 			
 			
-			week = reportpage.findElements(By.tagName("div"));
+			hour = reportpage.findElements(By.tagName("div"));
 			int startpos  = 0, endpos = 0;		
 			
-			for (int i = 0;i < week.size(); i++)
+			for (int i = 0;i < hour.size(); i++)
 			{				
 				//logger.info(week.get(i).getText() + "    " + i);
-				if (week.get(i).getText().equals("Hour"))
+				if (hour.get(i).getText().equals("Hour"))
 					startpos = i; 
-				else if(week.get(i).getText().equals("Additional Filters:")) {
+				else if(hour.get(i).getText().equals("Additional Filters:")) {
 					{endpos = i; logger.info("endpos"+ endpos);}
 					break;
 				}
-				else if(week.get(i).getText().contains("partial")) {
+				else if(hour.get(i).getText().contains("partial")) {
 					endpos = i; 
 					break;
 				}
-				else if(week.get(i).getText().contains("Page 1")) {
+				else if(hour.get(i).getText().contains("Page 1")) {
 					endpos = i;
 					break;
 				}
@@ -511,7 +519,7 @@ public class Timestep extends Mainpage {
 			for (;startpos < endpos; startpos += 19)
 			{
 
-				String weeksub = week.get(startpos).getText().substring(0, 5);
+				String weeksub = hour.get(startpos).getText().substring(0, 5);
 				try {
 					Date weekdate = hourformat.parse(weeksub);
 					Hourlist.add(weekdate);
@@ -648,7 +656,7 @@ public class Timestep extends Mainpage {
 	{
 		TrendReport();
 		
-		List<WebElement> week;
+		List<WebElement> days;
 		ArrayList<Date> Daylist = new ArrayList<Date>();	
 		
 		WebElement timeRange = driver.findElement(By.id("date_range"));
@@ -680,22 +688,22 @@ public class Timestep extends Mainpage {
 		try{	
 			new WebDriverWait(driver, 10).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("reportContent"));
 			WebElement reportpage = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("CrystalViewercridreportpage")));		
-			week = reportpage.findElements(By.tagName("div"));
+			days = reportpage.findElements(By.tagName("div"));
 			int startpos  = 0, endpos = 0;		
 			
-			for (int i = 0;i < week.size(); i++)
+			for (int i = 0;i < days.size(); i++)
 			{				
-				if (week.get(i).getText().equals("Day"))
+				if (days.get(i).getText().equals("Day"))
 					startpos = i;
-				else if(week.get(i).getText().equals("Additional Filters:")) {
+				else if(days.get(i).getText().equals("Additional Filters:")) {
 					endpos = i;
 					break;
 				}
-				else if(week.get(i).getText().contains("partial")) {
+				else if(days.get(i).getText().contains("partial")) {
 					endpos = i; 
 					break;
 				}
-				else if(week.get(i).getText().contains("Page 1")) {
+				else if(days.get(i).getText().contains("Page 1")) {
 					endpos = i;
 					break;
 				}
@@ -704,7 +712,7 @@ public class Timestep extends Mainpage {
 			
 			for (;startpos < endpos; startpos += 17)
 			{
-				String weeksub = week.get(startpos).getText().substring(0, 10);
+				String weeksub = days.get(startpos).getText().substring(0, 10);
 				try {
 					Date weekdate = format.parse(weeksub);
 					Daylist.add(weekdate);
@@ -747,7 +755,7 @@ public class Timestep extends Mainpage {
 	{
 		TrendReport();
 		
-		List<WebElement> week;
+		List<WebElement> months;
 		ArrayList<Date> Monthlist = new ArrayList<Date>();	
 	
 		DateFormat formatmonth = new SimpleDateFormat("MMM-yy");
@@ -768,23 +776,23 @@ public class Timestep extends Mainpage {
 			WebElement reportpage = new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.id("CrystalViewercridreportpage")));
 			
 			
-			week = reportpage.findElements(By.tagName("div"));
+			months = reportpage.findElements(By.tagName("div"));
 			int startpos  = 0, endpos = 0;		
 			
-			for (int i = 0;i < week.size(); i++)
+			for (int i = 0;i < months.size(); i++)
 			{				
 				//logger.info(week.get(i).getText() + "    " + i);
-				if (week.get(i).getText().equals("Month"))
+				if (months.get(i).getText().equals("Month"))
 					startpos = i;
-				else if(week.get(i).getText().equals("Additional Filters:")) {
+				else if(months.get(i).getText().equals("Additional Filters:")) {
 					endpos = i;
 					break;
 				}
-				else if(week.get(i).getText().contains("partial")) {
+				else if(months.get(i).getText().contains("partial")) {
 					endpos = i; 
 					break;
 				}		
-				else if(week.get(i).getText().contains("Page 1")) {
+				else if(months.get(i).getText().contains("Page 1")) {
 					endpos = i;
 					break;
 				}
@@ -794,8 +802,8 @@ public class Timestep extends Mainpage {
 			
 			for (;startpos < endpos; startpos += 17)
 			{
-				logger.info(week.get(startpos).getText());
-				String weeksub = week.get(startpos).getText().substring(0, 6);
+				logger.info(months.get(startpos).getText());
+				String weeksub = months.get(startpos).getText().substring(0, 6);
 				try {
 					Date weekdate = formatmonth.parse(weeksub);
 					Monthlist.add(weekdate);
@@ -840,7 +848,7 @@ public class Timestep extends Mainpage {
 	{
 		TrendReport();
 		
-		List<WebElement> week;
+		List<WebElement> quarters;
 		ArrayList<Date> Quarterlist = new ArrayList<Date>();	
 		HashMap<Date, String> quarterlist = new HashMap<Date, String>();
 		DateFormat quarterformat = new SimpleDateFormat("yyyy");
@@ -871,23 +879,23 @@ public class Timestep extends Mainpage {
 			WebElement reportpage = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("CrystalViewercridreportpage")));
 			
 			
-			week = reportpage.findElements(By.tagName("div"));
+			quarters = reportpage.findElements(By.tagName("div"));
 			int startpos  = 0, endpos = 0;		
 			
-			for (int i = 0;i < week.size(); i++)
+			for (int i = 0;i < quarters.size(); i++)
 			{				
 				//logger.info(week.get(i).getText() + "    " + i);
-				if (week.get(i).getText().equals("Quarter"))
+				if (quarters.get(i).getText().equals("Quarter"))
 					startpos = i;
-				else if(week.get(i).getText().equals("Additional Filters:")) {
+				else if(quarters.get(i).getText().equals("Additional Filters:")) {
 					endpos = i;
 					break;
 				}
-				else if(week.get(i).getText().contains("partial")) {
+				else if(quarters.get(i).getText().contains("partial")) {
 					endpos = i; 
 					break;
 				}
-				else if(week.get(i).getText().contains("Page 1")) {
+				else if(quarters.get(i).getText().contains("Page 1")) {
 					endpos = i;
 					break;
 				}
@@ -896,11 +904,11 @@ public class Timestep extends Mainpage {
 			
 			for (;startpos < endpos; startpos += 17)
 			{
-				logger.info(week.get(startpos).getText());
-				String weeksub = week.get(startpos).getText().substring(0, 4);
+				logger.info(quarters.get(startpos).getText());
+				String weeksub = quarters.get(startpos).getText().substring(0, 4);
 				try {
 					Date weekdate = quarterformat.parse(weeksub);
-					quarterlist.put(weekdate, week.get(startpos).getText());
+					quarterlist.put(weekdate, quarters.get(startpos).getText());
 					Quarterlist.add(weekdate);
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
@@ -954,7 +962,7 @@ public class Timestep extends Mainpage {
 	{
 		TrendReport();
 		
-		List<WebElement> week;
+		List<WebElement> years;
 		ArrayList<Date> Weeklist = new ArrayList<Date>();	
 		boolean result = false;
 		setTime("3 years");
@@ -982,14 +990,14 @@ public class Timestep extends Mainpage {
 			WebElement reportpage = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("CrystalViewercridreportpage")));
 			
 			
-			week = reportpage.findElements(By.tagName("div"));
+			years = reportpage.findElements(By.tagName("div"));
 			int startpos  = 0, endpos = 0;		
 			
-			for (int i = 0;i < week.size(); i++)
+			for (int i = 0;i < years.size(); i++)
 			{
-				if (week.get(i).getText().equals("Year"))
+				if (years.get(i).getText().equals("Year"))
 					startpos = i;
-				else if(week.get(i).getText().equals("Additional Filters:"))
+				else if(years.get(i).getText().equals("Additional Filters:"))
 					endpos = i; 
 			}
 			
@@ -997,8 +1005,8 @@ public class Timestep extends Mainpage {
 			
 			for (;startpos < endpos; startpos += 17)
 			{
-				logger.info(week.get(startpos).getText());
-				String weeksub = week.get(startpos).getText().substring(0, 10);
+				logger.info(years.get(startpos).getText());
+				String weeksub = years.get(startpos).getText().substring(0, 10);
 				try {
 					Date weekdate = format.parse(weeksub);
 					Weeklist.add(weekdate);
@@ -1045,7 +1053,64 @@ public class Timestep extends Mainpage {
 	}
 	
 	
-
+	public boolean ReportLayout() {
+		
+		TrendReport();
+		boolean result = false;
+	
+		try{			
+		
+			WebElement timeRange = driver.findElement(By.id("date_range"));
+			Select select = new Select(timeRange);
+			select.selectByValue("l30d");
+		
+			WebElement timesteps = driver.findElement(By.id("PARAM_TIME_STEP"));
+			timesteps.click();
+			
+			select = new Select(timesteps); 
+			select.selectByValue("WEEK");
+			
+			submit.click();
+		} catch (NoSuchElementException e)
+		{
+			gotomainpage();
+			ReportLayout();
+		}
+		
+		try{
+			
+			new WebDriverWait(driver, 10).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("reportContent"));
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("CrystalViewercridreportpage")));
+			
+			if(driver.findElement(By.xpath("//*[contains(text(),'Transfer')]")).isDisplayed())
+				driver.findElement(By.xpath("//*[contains(text(),'Rate')]"));
+					
+			if(driver.findElement(By.xpath("//*[contains(text(),'Average')]")).findElement(By.xpath("//*[contains(text(),'Call')]")).isDisplayed())
+				if(driver.findElement(By.xpath("//*[contains(text(),'Duration')]")).isDisplayed())
+					if(driver.findElement(By.xpath("//*[contains(text(),'Transferred')]")).isDisplayed())
+						if(driver.findElement(By.xpath("//*[contains(text(),'Calls')]")).isDisplayed())
+							driver.findElement(By.xpath("//*[contains(text(),'(minutes')]"));		
+			
+			ReportFile.addTestCase("ODI6.x-664:Time step week selection started", "ODI6.x-664:Time step week selection started => succeed");
+		}
+		catch(NoSuchElementException e)
+		{
+			ReportFile.addTestCase("ODI6.x-664:Time step week selection started", "ODI6.x-664:Time step week selection started => fail");
+		} catch(TimeoutException  e)
+		{
+			driver.switchTo().defaultContent();
+			gotomainpage();
+			ReportLayout();
+		}
+		
+		
+		driver.switchTo().defaultContent();
+		ReportFile.WriteToFile();
+		gotomainpage();
+		return result;
+		
+	}
+	
 	
 	//operations for different time range
 	public void timeperiodchange (String period)

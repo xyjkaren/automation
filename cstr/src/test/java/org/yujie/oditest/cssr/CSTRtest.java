@@ -17,7 +17,7 @@ public class CSTRtest {
 		Login logintest = new Login();
 	       logintest.execute();
 	       Timestep selecttest = new Timestep();
-	       selecttest.quarterSelectionSorting();
+	       selecttest.ReportLayout();
 	       GenerateHtml FinalRep = new GenerateHtml();
 	       FinalRep.execute();
 //	      DateFormat format = new SimpleDateFormat("MMM-yy");
