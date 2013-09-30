@@ -826,13 +826,14 @@ public class Timestep extends Mainpage {
 		
 	}
 	
-	public void quarterSelectionSorting()
+	public boolean quarterSelectionSorting()
 	{
 		TrendReport();
 		
 		List<WebElement> week;
 		ArrayList<Date> Weeklist = new ArrayList<Date>();	
-	
+		boolean result = false;
+		
 		setTime("13 months");
 		
 		driver.findElement(By.id("PARAM_START_DATE_label")).click();
@@ -850,6 +851,7 @@ public class Timestep extends Mainpage {
 			ReportFile.addTestCase("ODI6.x-670:Time step week sorting", "ODI6.x-670:Time step quarter sorting => fail");
 			ReportFile.WriteToFile();
 			gotomainpage();
+			return result;
 		}
 		
 		
@@ -886,7 +888,7 @@ public class Timestep extends Mainpage {
 				
 			}
 			
-			boolean result = true;
+			result = true;
 			for (int i = 0; i < Weeklist.size() - 1; i ++)
 			{
 				if (Weeklist.get(i).after(Weeklist.get(i+1)))
@@ -907,22 +909,23 @@ public class Timestep extends Mainpage {
 		catch(TimeoutException e) 
 		{
 			gotomainpage();
-			weekSelectionSorting();
+			quarterSelectionSorting();
 		}
 		
 		driver.switchTo().defaultContent();
 		ReportFile.WriteToFile();
 		gotomainpage();
+		return result;
 		
 	}
 		
-	public void yearSelectionSorting()
+	public boolean yearSelectionSorting()
 	{
 		TrendReport();
 		
 		List<WebElement> week;
 		ArrayList<Date> Weeklist = new ArrayList<Date>();	
-	
+		boolean result = false;
 		setTime("3 years");
 		
 		driver.findElement(By.id("PARAM_START_DATE_label")).click();
@@ -940,6 +943,7 @@ public class Timestep extends Mainpage {
 			ReportFile.addTestCase("ODI6.x-670:Time step week sorting", "ODI6.x-670:Time step year sorting => fail");
 			ReportFile.WriteToFile();
 			gotomainpage();
+			return result;
 		}
 		
 		try{	
@@ -978,9 +982,15 @@ public class Timestep extends Mainpage {
 			for (int i = 0; i < Weeklist.size() - 1; i ++)
 			{
 				if (Weeklist.get(i).before(Weeklist.get(i+1)))
-					ReportFile.addTestCase("ODI6.x-670:Time step day sorting", "ODI6.x-670:Time step year sorting => succeed");
+					{
+						ReportFile.addTestCase("ODI6.x-670:Time step day sorting", "ODI6.x-670:Time step year sorting => succeed");
+						result = true;
+					}
 				else
-					ReportFile.addTestCase("ODI6.x-670:Time step day sorting", "ODI6.x-670:Time step year sorting => failed");
+					{
+						ReportFile.addTestCase("ODI6.x-670:Time step day sorting", "ODI6.x-670:Time step year sorting => failed");
+						result = false;
+					}
 					
 			}
 		
@@ -993,34 +1003,18 @@ public class Timestep extends Mainpage {
 		catch(TimeoutException e) 
 		{
 			gotomainpage();
-			weekSelectionSorting();
+			yearSelectionSorting();
 		}
 		
 		driver.switchTo().defaultContent();
 		ReportFile.WriteToFile();
 		gotomainpage();
+		return result;
 		
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	//operations for different time range
 	public void timeperiodchange (String period)
