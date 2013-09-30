@@ -437,7 +437,7 @@ public class Timestep extends Mainpage {
 		TrendReport();
 		
 		List<WebElement> week;
-		ArrayList<Date> Weeklist = new ArrayList<Date>();	
+		ArrayList<Date> Hourlist = new ArrayList<Date>();	
 		DateFormat hourformat = new SimpleDateFormat("HH:MM");
 
 		
@@ -514,7 +514,7 @@ public class Timestep extends Mainpage {
 				String weeksub = week.get(startpos).getText().substring(0, 5);
 				try {
 					Date weekdate = hourformat.parse(weeksub);
-					Weeklist.add(weekdate);
+					Hourlist.add(weekdate);
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -524,9 +524,9 @@ public class Timestep extends Mainpage {
 			}
 			
 			boolean result = true;
-			for (int i = 0; i < Weeklist.size() - 1; i ++)
+			for (int i = 0; i < Hourlist.size() - 1; i ++)
 			{	
-				if (Weeklist.get(i).after(Weeklist.get(i+1)))
+				if (Hourlist.get(i).after(Hourlist.get(i+1)))
 					result = false;
 			}
 			
@@ -550,7 +550,7 @@ public class Timestep extends Mainpage {
 		driver.switchTo().defaultContent();
 		ReportFile.WriteToFile();
 		gotomainpage();
-		driver.quit();
+		//driver.quit();
 	}
 	
 	public void weekSelectionSorting()
@@ -649,7 +649,7 @@ public class Timestep extends Mainpage {
 		TrendReport();
 		
 		List<WebElement> week;
-		ArrayList<Date> Weeklist = new ArrayList<Date>();	
+		ArrayList<Date> Daylist = new ArrayList<Date>();	
 		
 		WebElement timeRange = driver.findElement(By.id("date_range"));
 		Select select = new Select(timeRange);
@@ -707,7 +707,7 @@ public class Timestep extends Mainpage {
 				String weeksub = week.get(startpos).getText().substring(0, 10);
 				try {
 					Date weekdate = format.parse(weeksub);
-					Weeklist.add(weekdate);
+					Daylist.add(weekdate);
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -716,9 +716,9 @@ public class Timestep extends Mainpage {
 				
 			}
 			
-			for (int i = 0; i < Weeklist.size() - 1; i ++)
+			for (int i = 0; i < Daylist.size() - 1; i ++)
 			{
-				if (Weeklist.get(i).before(Weeklist.get(i+1)))
+				if (Daylist.get(i).before(Daylist.get(i+1)))
 					ReportFile.addTestCase("ODI6.x-670:Time step day sorting", "ODI6.x-670:Time step week sorting => succeed");
 				else
 					ReportFile.addTestCase("ODI6.x-670:Time step day sorting", "ODI6.x-670:Time step week sorting => failed");
@@ -748,7 +748,7 @@ public class Timestep extends Mainpage {
 		TrendReport();
 		
 		List<WebElement> week;
-		ArrayList<Date> Weeklist = new ArrayList<Date>();	
+		ArrayList<Date> Monthlist = new ArrayList<Date>();	
 	
 		DateFormat formatmonth = new SimpleDateFormat("MMM-yy");
 		setTime("1 year");
@@ -798,7 +798,7 @@ public class Timestep extends Mainpage {
 				String weeksub = week.get(startpos).getText().substring(0, 6);
 				try {
 					Date weekdate = formatmonth.parse(weeksub);
-					Weeklist.add(weekdate);
+					Monthlist.add(weekdate);
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -807,9 +807,9 @@ public class Timestep extends Mainpage {
 			}
 			
 			boolean result = true;
-			for (int i = 0; i < Weeklist.size() - 1; i ++)
+			for (int i = 0; i < Monthlist.size() - 1; i ++)
 			{
-				if (Weeklist.get(i).after(Weeklist.get(i+1)))
+				if (Monthlist.get(i).after(Monthlist.get(i+1)))
 					result = false;
 			}
 			
@@ -841,12 +841,12 @@ public class Timestep extends Mainpage {
 		TrendReport();
 		
 		List<WebElement> week;
-		ArrayList<Date> Weeklist = new ArrayList<Date>();	
+		ArrayList<Date> Quarterlist = new ArrayList<Date>();	
 		HashMap<Date, String> quarterlist = new HashMap<Date, String>();
 		DateFormat quarterformat = new SimpleDateFormat("yyyy");
 		
 		boolean result = false;
-		setTime("1 year");
+		setTime("13 months");
 		
 		driver.findElement(By.id("PARAM_START_DATE_label")).click();
 		
@@ -901,7 +901,7 @@ public class Timestep extends Mainpage {
 				try {
 					Date weekdate = quarterformat.parse(weeksub);
 					quarterlist.put(weekdate, week.get(startpos).getText());
-					Weeklist.add(weekdate);
+					Quarterlist.add(weekdate);
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -911,13 +911,13 @@ public class Timestep extends Mainpage {
 			}
 			
 			result = true;
-			for (int i = 0; i < Weeklist.size() - 1; i ++)
+			for (int i = 0; i < Quarterlist.size() - 1; i ++)
 			{
-				if (Weeklist.get(i).after(Weeklist.get(i+1)))
+				if (Quarterlist.get(i).after(Quarterlist.get(i+1)))
 					result = false;
-				else if (Weeklist.get(i).equals(Weeklist.get(i+1))) {
-					String quarterbefore = quarterlist.get(Weeklist.get(i));
-					String quarterafter =  quarterlist.get(Weeklist.get(i));
+				else if (Quarterlist.get(i).equals(Quarterlist.get(i+1))) {
+					String quarterbefore = quarterlist.get(Quarterlist.get(i));
+					String quarterafter =  quarterlist.get(Quarterlist.get(i));
 					int before = Integer.parseInt(quarterbefore.substring(quarterbefore.length() - 1));
 					int after = Integer.parseInt(quarterafter.substring(quarterbefore.length() - 1));
 				if (before > after)
