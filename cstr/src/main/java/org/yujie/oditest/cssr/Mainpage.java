@@ -13,6 +13,7 @@ import net.sourceforge.htmlunit.corejs.javascript.tools.debugger.Main;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -40,6 +41,7 @@ public class Mainpage {
 	public WebElement startdatetime;
 	public WebElement enddatetime;
 	public DateFormat format;
+	public Cookie cookie;
 	
 	public Mainpage()
 	{

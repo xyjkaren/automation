@@ -36,7 +36,6 @@ public class ExportPdf extends Mainpage {
 	{
 		  JavascriptExecutor js=(JavascriptExecutor) driver;  
 		submit.click();
-		try{
 		
 		String mainWinhandler = driver.getWindowHandle();
 		
@@ -46,6 +45,11 @@ public class ExportPdf extends Mainpage {
 		
 		
 		driver.switchTo().window(mainWinhandler);
+		try{
+		int source = driver.getPageSource().indexOf("ExportPDF");
+		int end = driver.getPageSource().substring(source).indexOf("\'");
+		String str = driver.getPageSource().substring(source, source+end);
+		//System.out.println(str);
 		
 		WebElement export = new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(By.id("iExport")));
 		export.click();
@@ -57,8 +61,9 @@ public class ExportPdf extends Mainpage {
 		
 		
 		
-//		try{
-//		Object response = ((JavascriptExecutor) driver).executeScript(" var exportFormat = 'pdf';var xhr = null;" +
+		
+		
+//		((JavascriptExecutor) driver).executeScript(" var filelocation = arguments[0];var exportFormat = 'pdf';var xhr = null;" +
 //			      "if (window.XMLHttpRequest) {xhr = new XMLHttpRequest();}" +
 //			       "else if (window.ActiveXObject) {xhr = new ActiveXObject(\"Microsoft.XMLHTTP\"); }" +
 //			       "xhr.open('POST', 'https://sun-qa-ncp03clone.engca.bevocal.com:8443/np/odiAdvancedReporting/TestSSOSession.jsp', true);" +			   
@@ -76,8 +81,9 @@ public class ExportPdf extends Mainpage {
 //					"var SS = formatNumber(currentTime.getSeconds());" +
 //					"var exportTime = yyyy + mm + dd + HH + MM + SS;" +
 //					"if (exportFormat == 'pdf') {" +
+//					//"alert(arguments[0]);"+
 //		//	       "var frame = document.getElementById('reportContent');" +
-//					"	 window.open('ExportPDF.jsp?rand=IWXY-2IE5&exportTime='+exportTime,'_blank');} " +
+//					"	 window.location = filelocation+exportTime;} " +
 //					"else if (exportFormat == 'excel') {" +
 //					"	window.location = 'ExportExcel.jsp?rand=SNCI-2ICG&exportTime='+exportTime;}" +
 //					"else if (exportFormat == 'csv') {" +
@@ -87,47 +93,43 @@ public class ExportPdf extends Mainpage {
 //					"else {window.location = 'http://www.yahoo.com';} }" +
 //					"else {window.location = 'http://www.sina.com.cn';}}};" +
 //				//	"window.location='/np/welcome/index.jsp'};" +    // typo here
-//			       "xhr.send(null);" +
-//	//		       "frame.contentWindow.src = (arguments[0]);" +
-//			       "","pdf");
-//		System.out.println(response);
-//		
-//		}catch(WebDriverException e)
-//		{
-//			e.getClass();driver.quit();
-//		}
-//		
-		Thread.sleep(5000);
+//			       "xhr.send(null);", str);
+////	//		       "frame.contentWindow.src = (arguments[0]);" +
+////			       
+		
+		
+//		Thread.sleep(5000);
+//		driver.quit();
 		logger.info("Test case: Export to PDF open"); 
 	//	driver.quit();
 //		WebElement pdf = new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(By.linkText("Export to PDF")));
 //		pdf.click();
 		
-//		FileDownloader downloader = new FileDownloader();
-//	    SimpleDateFormat datefor1 = new SimpleDateFormat("yyyy");
-//	    SimpleDateFormat datefor2 = new SimpleDateFormat("MM");
-//	    SimpleDateFormat datefor3 = new SimpleDateFormat("dd");
-//	    SimpleDateFormat datefor4 = new SimpleDateFormat("HH");
-//	    SimpleDateFormat datefor5 = new SimpleDateFormat("mm");
-//	    SimpleDateFormat datefor6 = new SimpleDateFormat("ss");
-//
-//	    Date now = new Date();
-//	    String date = datefor1.format(now)+datefor2.format(now)+datefor3.format(now)+datefor4.format(now)+datefor5.format(now)+datefor6.format(now);
-//	    
-//	    String url = "https://sun-qa-ncp03clone.engca.bevocal.com:8443/np/odiAdvancedReporting/ExportPDF.jsp";
-//	  // System.out.print(url);
-//	    try {
-//			downloader.downloader(url);
-//		} catch (NullPointerException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (URISyntaxException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		FileDownloader downloader = new FileDownloader();
+	    SimpleDateFormat datefor1 = new SimpleDateFormat("yyyy");
+	    SimpleDateFormat datefor2 = new SimpleDateFormat("MM");
+	    SimpleDateFormat datefor3 = new SimpleDateFormat("dd");
+	    SimpleDateFormat datefor4 = new SimpleDateFormat("HH");
+	    SimpleDateFormat datefor5 = new SimpleDateFormat("mm");
+	    SimpleDateFormat datefor6 = new SimpleDateFormat("ss");
+
+	    Date now = new Date();
+	    String date = datefor1.format(now)+datefor2.format(now)+datefor3.format(now)+datefor4.format(now)+datefor5.format(now)+datefor6.format(now);
+	    
+	    String url = "https://sun-qa-ncp03clone.engca.bevocal.com:8443/np/odiAdvancedReporting/"+str+date;
+//	    System.out.println(url);
+	    try {
+			downloader.downloader(url);
+		} catch (NullPointerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 		//Thread.sleep(2000);

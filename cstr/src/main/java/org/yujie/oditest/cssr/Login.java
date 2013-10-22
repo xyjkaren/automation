@@ -6,8 +6,10 @@ import java.util.NoSuchElementException;
 import net.sourceforge.htmlunit.corejs.javascript.tools.debugger.Main;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -38,9 +40,9 @@ public class Login extends Mainpage{
 		WebElement userinput = driver.findElement(By.xpath(userNameXPath));
 		WebElement pswdinput = driver.findElement(By.xpath(passwordXPath));
 		WebElement submit = driver.findElement(By.xpath(submitXPath));
-		try{
-		//	((JavascriptExecutor) driver).executeScript("function resumeExport(){window.location='/np/welcome/index.jsp';}");
+		
 
+		try{
 			
 //			Object response = ((JavascriptExecutor) driver).executeScript(" var xhr = null;" +
 //			      "if (window.XMLHttpRequest) {xhr = new XMLHttpRequest();}" +
@@ -107,6 +109,7 @@ public class Login extends Mainpage{
 		submit.submit();
 		validlogin();
 		choosedomain();
+		
 	//	driver.quit();
 	}
 	

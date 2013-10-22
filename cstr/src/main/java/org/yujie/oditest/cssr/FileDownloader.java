@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.channels.SeekableByteChannel;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.Set;
@@ -20,6 +21,8 @@ import javax.swing.tree.ExpandVetoException;
 import net.sourceforge.htmlunit.corejs.javascript.tools.debugger.Main;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -33,6 +36,7 @@ import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.cookie.BasicClientCookie;
+import org.apache.http.impl.io.HttpRequestParser;
 import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.xalan.trace.TraceManager;
@@ -40,10 +44,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.eventbus.DeadEvent;
+import com.thoughtworks.selenium.Selenium;
+import com.thoughtworks.selenium.SeleniumCommandTimedOutException;
 
 public class FileDownloader extends Mainpage{
 	
@@ -88,8 +95,10 @@ public class FileDownloader extends Mainpage{
 	private BasicCookieStore mimicCookieState (Set<Cookie> seleniumCookieSet) {
 		BasicCookieStore mimicWebDriverCookieStore = new BasicCookieStore();
 		for (Cookie seleniumCookie : seleniumCookieSet) {
-			BasicClientCookie duplicateCookie = new BasicClientCookie(seleniumCookie.getName(), seleniumCookie.getValue());
+			BasicClientCookie duplicateCookie = new BasicClientCookie(seleniumCookie.getName(),seleniumCookie.getValue() );
             duplicateCookie.setDomain(seleniumCookie.getDomain());
+          //  duplicateCookie.setDomain("sun-qa-ncp03clone.engca.bevocal.com");
+          //  duplicateCookie.setPath("/np/odiAdvancedReporting");
             duplicateCookie.setSecure(seleniumCookie.isSecure());
             duplicateCookie.setExpiryDate(seleniumCookie.getExpiry());
             duplicateCookie.setPath(seleniumCookie.getPath());
@@ -102,7 +111,7 @@ public class FileDownloader extends Mainpage{
 	
 	public static HttpClient wrapClient(HttpClient base) {
 		try {
-			SSLContext ctx = SSLContext.getInstance("TLS");
+			SSLContext ctx = SSLContext.getInstance("SSL");
 			X509TrustManager tm = new X509TrustManager() {
 				
 				public X509Certificate[] getAcceptedIssuers() {
@@ -124,11 +133,13 @@ public class FileDownloader extends Mainpage{
 			};
 			
 			ctx.init(null,new TrustManager[]{tm},null);
-			SSLSocketFactory ssf = new SSLSocketFactory(ctx);
-			ssf.setHostnameVerifier(SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+			SSLSocketFactory ssf = new SSLSocketFactory(ctx,SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+		//	ssf.setHostnameVerifier(SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+			
 			ClientConnectionManager ccm = base.getConnectionManager();
 			SchemeRegistry sr = ccm.getSchemeRegistry();
-			sr.register(new Scheme("https",ssf, 443));
+			Scheme https = new Scheme("https", 443, ssf);
+			sr.register(https);
 			return new DefaultHttpClient(ccm,base.getParams());
 		}catch(Exception ex) {
 			ex.printStackTrace();return null;
@@ -146,24 +157,53 @@ public class FileDownloader extends Mainpage{
 		File downloadedFile = new File(this.localDownloadPath + fileToDownload.getFile().replaceFirst("/|\\\\", ""));
 		if (downloadedFile.canWrite() == false) downloadedFile.setWritable(true);
 		
+		for (Cookie a: driver.manage().getCookies())
+		{	cookie = a;
+		//	System.out.printf("cookie store sessiondownload is :%s = %s\n",a.getValue(),((RemoteWebDriver)driver).getSessionId().toString());
+		}
+		
 		HttpClient httpclient = new DefaultHttpClient();
 		httpclient  = wrapClient(httpclient);
 		BasicHttpContext localcontext = new BasicHttpContext();
 		
-		logger.info("Mimic WebDriver Cookie state: " + this.mimicWebDriverCookieState);
+		logger.info("Mimic WebDriver Cookie state: " + ((RemoteWebDriver)driver).getSessionId().toString());
 		
 		if (this.mimicWebDriverCookieState) {
 			localcontext.setAttribute(ClientContext.COOKIE_STORE,mimicCookieState(driver.manage().getCookies()));
 		}
+		String testsso = "https://sun-qa-ncp03clone.engca.bevocal.com:8443/np/odiAdvancedReporting/TestSSOSession.jsp";
+		URL testssourl = new URL(testsso);
+		HttpPost httppost1 = new HttpPost(testssourl.toURI());
+		HttpParams params = httppost1.getParams();
+		params.setParameter(ClientPNames.HANDLE_REDIRECTS, this.followDirects);
+		httppost1.setHeader("Cookie","JSESSIONID="+cookie.getValue());
+		httppost1.setParams(params);
 		
-		HttpPost httppost = new HttpPost(fileToDownload.toURI());
-		HttpResponse response = httpclient.execute(httppost);
+		HttpResponse response1 = httpclient.execute(httppost1); 
+		BufferedReader rd1 = new BufferedReader(new InputStreamReader(response1.getEntity().getContent()));
 		
-		BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
-		String downloadabsolutepath = "";
-		while((downloadabsolutepath = rd.readLine()) !=null) {
-			System.out.print(downloadabsolutepath)	;
+		while((testsso = rd1.readLine()) !=null) {
+			System.out.printf("sso:%s",testsso)	;
 		}
+		//driver.quit();
+		HttpGet httppost = new HttpGet(fileToDownload.toURI());
+		logger.info(fileToDownload.toString());
+		HttpParams params1 = httppost.getParams();
+		params1.setParameter(ClientPNames.HANDLE_REDIRECTS, this.followDirects);
+		httppost.setHeader("Cookie","JSESSIONID="+cookie.getValue());
+		httppost.setParams(params1);
+		HttpResponse response = httpclient.execute(httppost);
+		//BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+		FileUtils.copyInputStreamToFile(response.getEntity().getContent(),downloadedFile);
+		String downloadabsolutepath = "";
+
+//		while((downloadabsolutepath = rd.readLine()) !=null) {
+//			System.out.print(downloadabsolutepath)	;
+//		}
+		response.getEntity().getContent().close();
+
+		
+		
 		
 		
 //		HttpGet httpget = new HttpGet(fileToDownload.toURI());
