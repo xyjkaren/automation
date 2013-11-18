@@ -23,17 +23,31 @@ public class CSTRtest {
 	@Test
 	public void test() {
 		
+		
+		
 		Login logintest = new Login();
 	       logintest.execute();
 //	       Timestep selecttest = new Timestep();
 	       
-	       
+//	       try {
+//	    	   FileDownloader downloader = new FileDownloader();
+//				downloader.downloader("https://localhost/test.pdf");
+//			} catch (NullPointerException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			} catch (URISyntaxException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 //	       selecttest.ReportLayout();-
 //	       GenerateHtml FinalRep = new GenerateHtml();
 //	       FinalRep.execute();
 //	      
-	   ExportPdf pdf = new ExportPdf();
-	   pdf.exportpdf();
+	     ExportPdf pdf = new ExportPdf();
+	     pdf.exportpdf();
 	   
 	   
 	      

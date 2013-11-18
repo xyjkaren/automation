@@ -1,8 +1,11 @@
 package org.yujie.oditest.cssr;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URISyntaxException;
@@ -29,6 +32,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.params.ClientPNames;
 import org.apache.http.client.protocol.ClientContext;
+import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.conn.ClientConnectionManager;
 import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.scheme.SchemeRegistry;
@@ -148,8 +152,7 @@ public class FileDownloader extends Mainpage{
 	
 	public String downloader(String attribute) throws IOException, NullPointerException, URISyntaxException {
 		String fileToDownloadLocation = attribute;
-		
-		
+	//	String fileToDownloadLocation = "https://sun-qa-ncp03clone.engca.bevocal.com:8443/np/odiAdvancedReporting/ExportPDF.jsp";
 		
 		if (fileToDownloadLocation.trim().equals("")) throw new NullPointerException("The element you specified does not link to anything");
 		
@@ -185,23 +188,45 @@ public class FileDownloader extends Mainpage{
 		while((testsso = rd1.readLine()) !=null) {
 			System.out.printf("sso:%s",testsso)	;
 		}
-		//driver.quit();
-		HttpGet httppost = new HttpGet(fileToDownload.toURI());
-		logger.info(fileToDownload.toString());
-		HttpParams params1 = httppost.getParams();
-		params1.setParameter(ClientPNames.HANDLE_REDIRECTS, this.followDirects);
-		httppost.setHeader("Cookie","JSESSIONID="+cookie.getValue());
-		httppost.setParams(params1);
-		HttpResponse response = httpclient.execute(httppost);
-		//BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
-		FileUtils.copyInputStreamToFile(response.getEntity().getContent(),downloadedFile);
-		String downloadabsolutepath = "";
+		
+		int rand = attribute.indexOf("rand");
+		int exportT = attribute.indexOf("&exportTime");
+		String randS = attribute.substring(rand+5,exportT);
+		System.out.printf("\n%s\n",randS);
+		String num = attribute.substring(exportT+12);
+		System.out.printf("\n%s\n",num);
 
+		URIBuilder builder = new URIBuilder();
+		builder.setScheme("https").setHost("sun-qa-ncp03clone.engca.bevocal.com").setPort(8443).setPath("/np/odiAdvancedReporting/ExportPDF.jsp").setParameter("rand", randS).setParameter("exportTime", num);
+		
+	//	driver.quit();
+		HttpGet httpget = new HttpGet(fileToDownload.toURI());
+		logger.info(fileToDownload.toString());
+		HttpParams params1 = httpget.getParams();
+	//	params1.setParameter("rand", randS);
+	//	params1.setParameter("exportTime", num);
+		params1.setParameter(ClientPNames.HANDLE_REDIRECTS, this.followDirects);
+		httpget.setHeader("Cookie","JSESSIONID="+cookie.getValue());
+		
+		httpget.setHeader("Accept","text/html");
+		httpget.setHeader("Accept-Charset","UTF-8");
+	//	httppost.setHeader("Content-disposition","attachment;filename="+"ODICallStatisticsTrendReport"+num+".pdf");
+	//	httppost.setHeader("NPConstants.NP_MENU_ID_QUERY_STRING","odiCallStatisticsTrend");
+		httpget.setParams(params1);
+		
+		
+		
+		HttpResponse response = httpclient.execute(httpget);
+		HttpEntity entity = response.getEntity();
+//		BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+//		FileUtils.copyInputStreamToFile(response.getEntity().getContent(),downloadedFile);
+		String downloadabsolutepath = "";
+	
 //		while((downloadabsolutepath = rd.readLine()) !=null) {
 //			System.out.print(downloadabsolutepath)	;
 //		}
 		response.getEntity().getContent().close();
-
+		
 		
 		
 		

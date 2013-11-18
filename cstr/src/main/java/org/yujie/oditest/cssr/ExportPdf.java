@@ -81,26 +81,29 @@ public class ExportPdf extends Mainpage {
 //					"var SS = formatNumber(currentTime.getSeconds());" +
 //					"var exportTime = yyyy + mm + dd + HH + MM + SS;" +
 //					"if (exportFormat == 'pdf') {" +
-//					//"alert(arguments[0]);"+
+//				//	" window.open('http://www.google.com','_blank');}"+
+//				//	"alert(filelocation);"+
 //		//	       "var frame = document.getElementById('reportContent');" +
-//					"	 window.location = filelocation+exportTime;} " +
+//					"	var _window = window.open(filelocation+exportTime,'_blank');" +
+//					" _window.document.close();" +
+//					"_window.document.execCommand('SaveAs',true,'ODICallStatisticsTrendReport'+exportTime+'.pdf'||filelocation+exportTime);" +
+//					"_window.close();" +
+//					"alert();}" +
 //					"else if (exportFormat == 'excel') {" +
-//					"	window.location = 'ExportExcel.jsp?rand=SNCI-2ICG&exportTime='+exportTime;}" +
+//					"	window.location = filelocation+exportTime; }" +
 //					"else if (exportFormat == 'csv') {" +
 //					"	window.location = 'ExportCSV.jsp?rand=SNCI-2ICG&exportTime='+exportTime; }" +
 //					"else if(exportFormat == 'cr') {" +
 //		            "    window.location = 'ExportCrystalReport.jsp?rand=SNCI-2ICG&exportTime='+exportTime; } }" +
 //					"else {window.location = 'http://www.yahoo.com';} }" +
 //					"else {window.location = 'http://www.sina.com.cn';}}};" +
-//				//	"window.location='/np/welcome/index.jsp'};" +    // typo here
 //			       "xhr.send(null);", str);
-////	//		       "frame.contentWindow.src = (arguments[0]);" +
-////			       
+			       
 		
 		
 //		Thread.sleep(5000);
-//		driver.quit();
-		logger.info("Test case: Export to PDF open"); 
+	//	driver.quit();
+	//	logger.info("Test case: Export to PDF open"); 
 	//	driver.quit();
 //		WebElement pdf = new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(By.linkText("Export to PDF")));
 //		pdf.click();
@@ -117,7 +120,8 @@ public class ExportPdf extends Mainpage {
 	    String date = datefor1.format(now)+datefor2.format(now)+datefor3.format(now)+datefor4.format(now)+datefor5.format(now)+datefor6.format(now);
 	    
 	    String url = "https://sun-qa-ncp03clone.engca.bevocal.com:8443/np/odiAdvancedReporting/"+str+date;
-//	    System.out.println(url);
+	    	//url = str+date;
+	    System.out.println(url);
 	    try {
 			downloader.downloader(url);
 		} catch (NullPointerException e) {
