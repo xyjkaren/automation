@@ -27,14 +27,13 @@ public class ExportPdf extends Mainpage {
 		gotomainpage();
 		TrendReport();
 		
-		String[] steps = {"Open","Save","Cancel"};
-		operations = Arrays.asList(steps);
 	}
 			
 	
 	public void exportpdf()
 	{
-		  JavascriptExecutor js=(JavascriptExecutor) driver;  
+		setTime("3 months");
+		
 		submit.click();
 		
 		String mainWinhandler = driver.getWindowHandle();
@@ -54,59 +53,8 @@ public class ExportPdf extends Mainpage {
 		WebElement export = new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(By.id("iExport")));
 		export.click();
 		
-		//autoitThread tt = new autoitThread();
-	//	tt.start();
 		WebElement pdf = new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(By.linkText("Export to PDF")));
-		//pdf.click();
 		
-		
-		
-		
-		
-//		((JavascriptExecutor) driver).executeScript(" var filelocation = arguments[0];var exportFormat = 'pdf';var xhr = null;" +
-//			      "if (window.XMLHttpRequest) {xhr = new XMLHttpRequest();}" +
-//			       "else if (window.ActiveXObject) {xhr = new ActiveXObject(\"Microsoft.XMLHTTP\"); }" +
-//			       "xhr.open('POST', 'https://sun-qa-ncp03clone.engca.bevocal.com:8443/np/odiAdvancedReporting/TestSSOSession.jsp', true);" +			   
-//			 //      "xhr.open('GET','/',true);" +
-//					"xhr.onreadystatechange = function() {" +				
-//					"if (xhr.readyState == 4) {if (xhr.status == 200) {" +
-//					"var response = xhr.responseText;" +
-//					"if(response == 'TestSSOSession') {" +
-//					"var currentTime = new Date;" +
-//					"var yyyy = currentTime.getFullYear().toString(10);" +
-//					"var mm = formatNumber(currentTime.getMonth()+1);" +
-//					"var dd = formatNumber(currentTime.getDate());" +
-//					"var HH = formatNumber(currentTime.getHours());" +
-//					"var MM = formatNumber(currentTime.getMinutes());" +
-//					"var SS = formatNumber(currentTime.getSeconds());" +
-//					"var exportTime = yyyy + mm + dd + HH + MM + SS;" +
-//					"if (exportFormat == 'pdf') {" +
-//				//	" window.open('http://www.google.com','_blank');}"+
-//				//	"alert(filelocation);"+
-//		//	       "var frame = document.getElementById('reportContent');" +
-//					"	var _window = window.open(filelocation+exportTime,'_blank');" +
-//					" _window.document.close();" +
-//					"_window.document.execCommand('SaveAs',true,'ODICallStatisticsTrendReport'+exportTime+'.pdf'||filelocation+exportTime);" +
-//					"_window.close();" +
-//					"alert();}" +
-//					"else if (exportFormat == 'excel') {" +
-//					"	window.location = filelocation+exportTime; }" +
-//					"else if (exportFormat == 'csv') {" +
-//					"	window.location = 'ExportCSV.jsp?rand=SNCI-2ICG&exportTime='+exportTime; }" +
-//					"else if(exportFormat == 'cr') {" +
-//		            "    window.location = 'ExportCrystalReport.jsp?rand=SNCI-2ICG&exportTime='+exportTime; } }" +
-//					"else {window.location = 'http://www.yahoo.com';} }" +
-//					"else {window.location = 'http://www.sina.com.cn';}}};" +
-//			       "xhr.send(null);", str);
-			       
-		
-		
-//		Thread.sleep(5000);
-	//	driver.quit();
-	//	logger.info("Test case: Export to PDF open"); 
-	//	driver.quit();
-//		WebElement pdf = new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(By.linkText("Export to PDF")));
-//		pdf.click();
 		
 		FileDownloader downloader = new FileDownloader();
 	    SimpleDateFormat datefor1 = new SimpleDateFormat("yyyy");
@@ -120,8 +68,8 @@ public class ExportPdf extends Mainpage {
 	    String date = datefor1.format(now)+datefor2.format(now)+datefor3.format(now)+datefor4.format(now)+datefor5.format(now)+datefor6.format(now);
 	    
 	    String url = "https://sun-qa-ncp03clone.engca.bevocal.com:8443/np/odiAdvancedReporting/"+str+date;
-	    	//url = str+date;
-	    System.out.println(url);
+//	    System.out.println(url);
+	
 	    try {
 			downloader.downloader(url);
 		} catch (NullPointerException e) {
@@ -135,14 +83,6 @@ public class ExportPdf extends Mainpage {
 			e.printStackTrace();
 		}
 		
-		
-		//Thread.sleep(2000);
-//		String[] dialog =  new String[]{ "Save_Dialog_IE.exe","Download","Cancel"}; 
-//		Runtime.getRuntime().exec(dialog);
-		
-		//gotomainpage();
-//driver.switchTo().frame(driver.findElement(By.name("reportContent")));
-		//WebElement export  = new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(By.className("filterbutton")));
 		} catch(Exception e)
 		{
 			e.printStackTrace();
@@ -150,29 +90,5 @@ public class ExportPdf extends Mainpage {
 		
 	}
 	
-	private class autoitThread extends Thread {
-		public autoitThread() {
-			// TOO Auto-generated constructor stub
-		}
-		
-		public synchronized void run() {
-			try {
-				
-				Thread.sleep(5000);logger.info("after sleep");			
-				String[] dialog =  new String[]{ "Save_Dialog_IE.exe","Download","Cancel"};logger.info("after string[]"); 
-				Runtime.getRuntime().exec(dialog);logger.info("after call autoit");
-				Thread.sleep(100);
-				} catch (InterruptedException e) {
-					logger.debug("handle thread interrupt");
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-			}
-		
-	}
 	
 }

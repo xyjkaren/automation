@@ -7,7 +7,9 @@ import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.channels.SeekableByteChannel;
@@ -48,6 +50,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.io.IOUtils;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -80,12 +83,12 @@ public class FileDownloader extends Mainpage{
 		this.localDownloadPath = filepath;
 	}
 	
-	public String downloadFile (WebElement element) throws Exception {
-		return downloader("href");
+	public void downloadFile (WebElement element) throws Exception {
+		downloader("href");
 	}
 	
-	public String downloadImg (WebElement element) throws Exception {
-		return downloader("src");
+	public void downloadImg (WebElement element) throws Exception {
+		downloader("src");
 	}
 	
 	public int getHTTPStatusOfLastDownlaodAttmpt() {
@@ -101,8 +104,6 @@ public class FileDownloader extends Mainpage{
 		for (Cookie seleniumCookie : seleniumCookieSet) {
 			BasicClientCookie duplicateCookie = new BasicClientCookie(seleniumCookie.getName(),seleniumCookie.getValue() );
             duplicateCookie.setDomain(seleniumCookie.getDomain());
-          //  duplicateCookie.setDomain("sun-qa-ncp03clone.engca.bevocal.com");
-          //  duplicateCookie.setPath("/np/odiAdvancedReporting");
             duplicateCookie.setSecure(seleniumCookie.isSecure());
             duplicateCookie.setExpiryDate(seleniumCookie.getExpiry());
             duplicateCookie.setPath(seleniumCookie.getPath());
@@ -150,9 +151,8 @@ public class FileDownloader extends Mainpage{
 		}
 	}
 	
-	public String downloader(String attribute) throws IOException, NullPointerException, URISyntaxException {
+	public void downloader(String attribute) throws IOException, NullPointerException, URISyntaxException {
 		String fileToDownloadLocation = attribute;
-	//	String fileToDownloadLocation = "https://sun-qa-ncp03clone.engca.bevocal.com:8443/np/odiAdvancedReporting/ExportPDF.jsp";
 		
 		if (fileToDownloadLocation.trim().equals("")) throw new NullPointerException("The element you specified does not link to anything");
 		
@@ -189,68 +189,34 @@ public class FileDownloader extends Mainpage{
 			System.out.printf("sso:%s",testsso)	;
 		}
 		
-		int rand = attribute.indexOf("rand");
-		int exportT = attribute.indexOf("&exportTime");
-		String randS = attribute.substring(rand+5,exportT);
-		System.out.printf("\n%s\n",randS);
-		String num = attribute.substring(exportT+12);
-		System.out.printf("\n%s\n",num);
-
-		URIBuilder builder = new URIBuilder();
-		builder.setScheme("https").setHost("sun-qa-ncp03clone.engca.bevocal.com").setPort(8443).setPath("/np/odiAdvancedReporting/ExportPDF.jsp").setParameter("rand", randS).setParameter("exportTime", num);
 		
-	//	driver.quit();
 		HttpGet httpget = new HttpGet(fileToDownload.toURI());
-		logger.info(fileToDownload.toString());
+		
 		HttpParams params1 = httpget.getParams();
-	//	params1.setParameter("rand", randS);
-	//	params1.setParameter("exportTime", num);
+		
 		params1.setParameter(ClientPNames.HANDLE_REDIRECTS, this.followDirects);
 		httpget.setHeader("Cookie","JSESSIONID="+cookie.getValue());
 		
 		httpget.setHeader("Accept","text/html");
 		httpget.setHeader("Accept-Charset","UTF-8");
-	//	httppost.setHeader("Content-disposition","attachment;filename="+"ODICallStatisticsTrendReport"+num+".pdf");
-	//	httppost.setHeader("NPConstants.NP_MENU_ID_QUERY_STRING","odiCallStatisticsTrend");
+		
 		httpget.setParams(params1);
-		
-		
-		
+			
 		HttpResponse response = httpclient.execute(httpget);
 		HttpEntity entity = response.getEntity();
-//		BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
-//		FileUtils.copyInputStreamToFile(response.getEntity().getContent(),downloadedFile);
-		String downloadabsolutepath = "";
-	
-//		while((downloadabsolutepath = rd.readLine()) !=null) {
-//			System.out.print(downloadabsolutepath)	;
-//		}
-		response.getEntity().getContent().close();
+
+		File targetFile = new File("cstrReport.pdf");
+		InputStream input = entity.getContent();
+		OutputStream output = new FileOutputStream(targetFile);
+		org.apache.commons.io.IOUtils.copy(input, output);
 		
-		
-		
-		
-		
-//		HttpGet httpget = new HttpGet(fileToDownload.toURI());
-//		HttpParams httpRequestParameters  = httpget.getParams();
-//		httpRequestParameters.setParameter(ClientPNames.HANDLE_REDIRECTS	, this.followDirects);
-//		httpget.setParams(httpRequestParameters);
-//		
-//		logger.info("send http request for " + httpget.getURI());
-//		HttpResponse response = httpclient.execute(httpget,localcontext);
-//		
-//		this.httpStatusOfLastDownloadAttmpt = response.getStatusLine().getStatusCode();
-//		logger.info("downloading file " + downloadedFile.getName());
-//		FileUtils.copyInputStreamToFile(response.getEntity().getContent(), downloadedFile);
-//		response.getEntity().getContent().close();
-//		
-//		String downloadabsolutepath = downloadedFile.getAbsolutePath();
-//		
-//		logger.info("the file is saved in " + downloadabsolutepath);
-//		
-		return downloadabsolutepath;
-		
+		output.close();
+		input.close();
+	    response.getEntity().getContent().close();
+							
 	}
+	
+	
 	
 	
 	public static void main(String[] args)
