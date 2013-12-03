@@ -2,55 +2,43 @@ package org.yujie.oditest.cssr;
 
 import static org.junit.Assert.*;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.TimeZone;
-import java.util.logging.SimpleFormatter;
+import java.io.OutputStreamWriter;
 
-import org.apache.http.conn.ssl.BrowserCompatHostnameVerifier;
+
+
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.util.PDFTextStripper;
+import org.apache.pdfbox.util.PDFTextStripperByArea;
 import org.junit.Test;
-import org.testng.annotations.IExpectedExceptionsAnnotation;
 
-import com.thoughtworks.selenium.Selenium;
 
 public class CSTRtest {
 
 	@Test
 	public void test() {
+				
 		
-		
-		
-		Login logintest = new Login();
-	       logintest.execute();
+//		Login logintest = new Login();
+//	    logintest.execute();
+	    
 //	       Timestep selecttest = new Timestep();
-	       
-//	       try {
-//	    	   FileDownloader downloader = new FileDownloader();
-//				downloader.downloader("https://localhost/test.pdf");
-//			} catch (NullPointerException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			} catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			} catch (URISyntaxException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//	       selecttest.ReportLayout();-
-//	       GenerateHtml FinalRep = new GenerateHtml();
-//	       FinalRep.execute();
 //	      
-	     ExportPdf pdf = new ExportPdf();
-	     pdf.exportpdf();
-	   
-	   
-	      
+	       
+//	    ExportReport pdf = new ExportReport();
+//	    pdf.execute();
+	  
+		ReportComparison report = new ReportComparison();;
+		report.excelReportRead();
+		report.ExtractExcelContent();
+//		report.pdfReportRead();
+//	    report.ExtractPDFContent();
+	    
  
 	}
 

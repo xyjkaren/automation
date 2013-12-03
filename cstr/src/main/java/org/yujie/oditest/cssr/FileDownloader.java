@@ -26,6 +26,8 @@ import javax.swing.tree.ExpandVetoException;
 import net.sourceforge.htmlunit.corejs.javascript.tools.debugger.Main;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.http.Header;
+import org.apache.http.HeaderIterator;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
@@ -66,6 +68,7 @@ public class FileDownloader extends Mainpage{
 	private boolean followDirects = true;
 	private boolean mimicWebDriverCookieState = true;
 	private int httpStatusOfLastDownloadAttmpt = 0;
+	private Header[] headers;
 	
 	public FileDownloader() {
 	
@@ -84,11 +87,11 @@ public class FileDownloader extends Mainpage{
 	}
 	
 	public void downloadFile (WebElement element) throws Exception {
-		downloader("href");
+		downloader("href","");
 	}
 	
 	public void downloadImg (WebElement element) throws Exception {
-		downloader("src");
+		downloader("src","");
 	}
 	
 	public int getHTTPStatusOfLastDownlaodAttmpt() {
@@ -151,9 +154,9 @@ public class FileDownloader extends Mainpage{
 		}
 	}
 	
-	public void downloader(String attribute) throws IOException, NullPointerException, URISyntaxException {
+	public String downloader(String attribute,String reportType) throws IOException, NullPointerException, URISyntaxException {
 		String fileToDownloadLocation = attribute;
-		
+		String filename = "";
 		if (fileToDownloadLocation.trim().equals("")) throw new NullPointerException("The element you specified does not link to anything");
 		
 		URL fileToDownload = new URL(fileToDownloadLocation);
@@ -196,7 +199,6 @@ public class FileDownloader extends Mainpage{
 		
 		params1.setParameter(ClientPNames.HANDLE_REDIRECTS, this.followDirects);
 		httpget.setHeader("Cookie","JSESSIONID="+cookie.getValue());
-		
 		httpget.setHeader("Accept","text/html");
 		httpget.setHeader("Accept-Charset","UTF-8");
 		
@@ -204,8 +206,26 @@ public class FileDownloader extends Mainpage{
 			
 		HttpResponse response = httpclient.execute(httpget);
 		HttpEntity entity = response.getEntity();
+					
+		headers = 	response.getAllHeaders();
+		for (int i = 0; i < headers.length; i ++){
+			String headerValue  = headers[i].getValue();
+			if (headerValue.contains("attachment"))
+			{
+				filename = headerValue.substring(headerValue.indexOf("=")+1);
+			}
+		}
+		
+		File targetFile = null;
+		
+		if (reportType.equals("PDF"))
+			targetFile = new File("cstrReport.pdf");
+		if (reportType.equals("CSV"))
+			targetFile = new File("cstrReport.csv");
+		if (reportType.equals("Excel"))
+			targetFile = new File("cstrReport.xls");
 
-		File targetFile = new File("cstrReport.pdf");
+			
 		InputStream input = entity.getContent();
 		OutputStream output = new FileOutputStream(targetFile);
 		org.apache.commons.io.IOUtils.copy(input, output);
@@ -213,9 +233,10 @@ public class FileDownloader extends Mainpage{
 		output.close();
 		input.close();
 	    response.getEntity().getContent().close();
-							
+		
+	//    driver.quit();
+	    return filename;
 	}
-	
 	
 	
 	

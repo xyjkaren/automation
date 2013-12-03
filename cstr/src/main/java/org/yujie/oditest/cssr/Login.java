@@ -20,7 +20,7 @@ public class Login extends Mainpage{
 
 	private static String username = null;
 	private static String password = null;
-	private static final String userNameXPath = "id('username')";
+	private static final String userNameXPath = "//*[@id='username']";
 	private static final String passwordXPath = "//*[@id='password']";
 	private static final String submitXPath = "//*[@id='login']/table/tbody/tr[4]/td[2]/div/input[3]";
 	public String loginpageUrl;
@@ -33,6 +33,7 @@ public class Login extends Mainpage{
 	
 	public void execute ()
 	{ 
+		
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		geturl(webUrl);
 		getuserinfo();
@@ -47,15 +48,13 @@ public class Login extends Mainpage{
 		submit.submit();
 		validlogin();
 		choosedomain();
-		
-	//	driver.quit();
 	}
 	
 	public void choosedomain()
 	{
 		WebElement domainlist = driver.findElement(By.id("dropdown"));
 		Select select = new Select(domainlist);
-		select.selectByValue("US_AIRWAYS");
+		select.selectByValue("METROPCS");
 	}
 	public void geturl (String url){
 		driver.get(url);
