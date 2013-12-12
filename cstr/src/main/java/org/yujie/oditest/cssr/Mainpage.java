@@ -14,8 +14,11 @@ import net.sourceforge.htmlunit.corejs.javascript.tools.debugger.Main;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
+import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -133,6 +136,11 @@ public class Mainpage {
 			gotomainpage();
 			TrendReport();
 		}
+		catch (ElementNotVisibleException ex)
+		{
+			gotomainpage();
+			TrendReport();
+		}
 	//	driver.switchTo().activeElement();
 		
 	}
@@ -158,10 +166,12 @@ public class Mainpage {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-				
+		
+		
 		startdate.clear();
 
 		removeAlert();
+		
 		if(period.equals("1 month"))
 		{
 			cal.add(Calendar.MONTH, -1);
@@ -218,10 +228,17 @@ public class Mainpage {
 	}
 	
 	public void removeAlert() {
-		
-		Alert alert = driver.switchTo().alert();
-		alert.dismiss();
-		
+		try {
+			Thread.sleep(500);
+			Alert alert = driver.switchTo().alert();
+			alert.dismiss();
+		}
+		catch (NoAlertPresentException ex)	{
+			return;
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public static void main(String[] args)

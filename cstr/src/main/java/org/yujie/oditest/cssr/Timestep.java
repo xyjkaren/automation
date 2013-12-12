@@ -802,7 +802,7 @@ public class Timestep extends Mainpage {
 			
 			for (;startpos < endpos; startpos += 17)
 			{
-				logger.info(months.get(startpos).getText());
+	//			logger.info(months.get(startpos).getText());
 				String weeksub = months.get(startpos).getText().substring(0, 6);
 				try {
 					Date weekdate = formatmonth.parse(weeksub);
