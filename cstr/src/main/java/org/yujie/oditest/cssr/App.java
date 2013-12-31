@@ -8,10 +8,23 @@ public class App
 {
     public static void main( String[] args )
     {
-        String[] a = {"ha","a"};
-        String[] b = a;
-        System.out.print(b);
-        System.out.print(b);
+    	
+    	Login logintest = new Login();
+	    logintest.execute();
+	    
+//	       Timestep selecttest = new Timestep();
+//	      
+	       
+	    ExportReport pdf = new ExportReport();
+	    pdf.execute();
+	  
+		ReportFileCreate report = new ReportFileCreate();
+		report.cvsRerpotRead();
+		report.ExtractCvsContent();
+//		report.excelReportRead();
+//		report.ExtractExcelContent();
+//		report.pdfReportRead();
 
+//	    report.ExtractPDFContent();
     }
 }

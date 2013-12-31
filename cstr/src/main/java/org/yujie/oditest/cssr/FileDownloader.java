@@ -171,9 +171,7 @@ public class FileDownloader extends Mainpage{
 		HttpClient httpclient = new DefaultHttpClient();
 		httpclient  = wrapClient(httpclient);
 		BasicHttpContext localcontext = new BasicHttpContext();
-		
-		logger.info("Mimic WebDriver Cookie state: " + ((RemoteWebDriver)driver).getSessionId().toString());
-		
+			
 		if (this.mimicWebDriverCookieState) {
 			localcontext.setAttribute(ClientContext.COOKIE_STORE,mimicCookieState(driver.manage().getCookies()));
 		}
@@ -189,7 +187,7 @@ public class FileDownloader extends Mainpage{
 		BufferedReader rd1 = new BufferedReader(new InputStreamReader(response1.getEntity().getContent()));
 		
 		while((testsso = rd1.readLine()) !=null) {
-			System.out.printf("sso:%s",testsso)	;
+			logger.info("sso:" +testsso)	;
 		}
 		
 		

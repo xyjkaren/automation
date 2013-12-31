@@ -1,6 +1,5 @@
 package org.yujie.oditest.cssr;
 
-import static org.junit.Assert.*;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -24,19 +23,20 @@ public class CSTRtest {
 	public void test() {
 				
 		
-//		Login logintest = new Login();
-//	    logintest.execute();
+		Login logintest = new Login();
+	    logintest.execute();
 	    
 //	       Timestep selecttest = new Timestep();
 //	      
 	       
-//	    ExportReport pdf = new ExportReport();
-//	    pdf.execute();
+	    ExportReport pdf = new ExportReport();
+	    pdf.execute();
 	  
-		ReportComparison report = new ReportComparison();;
-		report.excelReportRead();
-		report.ExtractExcelContent();
+//		ReportFileCreate report = new ReportFileCreate();;
+//		report.excelReportRead();
+//		report.ExtractExcelContent();
 //		report.pdfReportRead();
+
 //	    report.ExtractPDFContent();
 	    
  

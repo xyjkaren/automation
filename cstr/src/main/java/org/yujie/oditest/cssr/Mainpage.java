@@ -51,7 +51,7 @@ public class Mainpage {
 		
 		
 		try {
-			user =  new UserInfo("userinfo.xml");
+			user =  new UserInfo("/userinfo.xml");
 			}
 		catch (IOException e)
 		{

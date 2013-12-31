@@ -21,6 +21,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.gargoylesoftware.htmlunit.WebConnection;
 import com.thoughtworks.selenium.Selenium;
 
 
@@ -28,7 +29,8 @@ public class ExportReport extends Mainpage {
 	
 	private String fileUrl = "";
 	private Vector<String> WebReportContent = new Vector<String>();
-	private HashMap<String,Integer> elementpos = new HashMap<String,Integer>();
+	private ReportFileCreate report = new ReportFileCreate();;
+
 	
 	public ExportReport ()
 	{
@@ -71,10 +73,10 @@ public class ExportReport extends Mainpage {
 	//	DateFormat formatmonth = new SimpleDateFormat("MMM-yy");
 
 		
-		new WebDriverWait(driver, 10).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("reportContent"));
-		WebElement reportpage = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("CrystalViewercridreportpage")));
+		new WebDriverWait(driver, 5).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("reportContent"));
+		WebElement reportpage = new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.id("CrystalViewercridreportpage")));
 		
-		months = reportpage.findElements(By.tagName("div"));
+		months = reportpage.findElements(By.tagName("span"));
 		int startpos  = 0, endpos = 0;		
 		
 		for (int i = 0;i < months.size(); i++)
@@ -85,13 +87,9 @@ public class ExportReport extends Mainpage {
 							startpos = j;break;
 							}
 		            }
-				break;
+				
 		    }
-		}
-		
-		
-		for (int i = startpos; i < months.size(); i+=2) {
-			if(months.get(i).getText().contains("[Note:")) {
+			else if(months.get(i).getText().contains("[Note:")) {
 				endpos = i;
 				break;
 			}
@@ -102,72 +100,43 @@ public class ExportReport extends Mainpage {
 			
 		}
 		
-		String row = "";
+		int row = (endpos - startpos) / 8;
 		
-		for (int i = 1; i < endpos - startpos + 1 ;  i+=3){
-			if (!months.get(startpos+i-1).getCssValue("left").equals("auto"))
-			elementpos.put(months.get(startpos + i -1).getText().trim(),Integer.parseInt(months.get(startpos+i-1).getCssValue("left").substring(0,months.get(startpos+i-1).getCssValue("left").length()-2)));
-		}
+		String rowValue = ""; 
+		String Month = "";
+		String CallVolume = "";
+		String Transfers = "";
+		String TransferRate = "";
+		String ContainmentRate = "";
+		String CallDuration = "";
+		String AverageCallDuration = "";
+		String AvgCallDurationForTransferred = "";
 		
-		int elementsize = 0;
-		
-		if (elementpos.size() % 8 == 0)
-			elementsize = elementpos.size() /8;
-		else
-			elementsize = elementpos.size() / 8 + 1;
-		
-		String[] rowValue = new String[elementsize];
-		
-		for (int i = 0; i < elementsize ; i++) {
-			rowValue[i] = "";
-			for (int j = 0; j < 8; j ++) {System.out.println(months.get(startpos + i*8 + j ).getText());
-				int min = elementpos.get(months.get(startpos + i*8 + j ).getText().trim());
-				for (int k = j; k < 8; k++) {System.out.println("k"+elementpos.get(months.get(startpos + i*8 + k  ).getText().trim()) + months.get(startpos + i*8 + k  ).getText());
-					if (min > elementpos.get(months.get(startpos + i*8 + k  ).getText().trim())) {
-						min =  elementpos.get(months.get(startpos + i*8 + k ).getText().trim());
-					}
-				}
-				for (Entry<String, Integer> s : elementpos.entrySet()) {
-					if (min == s.getValue()){System.out.println("map " + s.getValue() + " + " + min);
-						rowValue[i] = rowValue[i] + " " + s.getKey();
-						elementpos.remove(s.getKey());
-						break;
-					}
-				}
-			}
-			System.out.println(rowValue[i]);
-		}
-		
-		driver.quit();
-//		startpos += 35;
-//		for (;startpos < startpos + 10; startpos++) {	
-//		if (months.get(startpos).getText().matches("\\w{3}-\\d{2}")) {
-//			break;
-//		}
-//		}
-//		int rowlength = startpos;
-//		startpos += 2;
-//		for (;startpos < startpos + 25; startpos ++) {
-//			if (months.get(startpos).getText().matches("\\w{3}-\\d{2}")) {
-//				break;
-//			} 
-//		}
-//		rowlength = startpos - rowlength;
-//		
-//		for (int i = startpos - rowlength;i < endpos; i += rowlength ) {
-//			for (int j = 0; j < rowlength ; j ++) {
-//				System.out.printf(" %s",months.get(j+i).getText());
-//			}
-//			System.out.println();
-//		}
-		
+		for (int i = 0; i < row; i++) {
+			
+			Month = months.get(startpos + i*8 + 5).getText().trim();
+			CallVolume = months.get(startpos + i*8 ).getText().trim(); 
+			Transfers = months.get(startpos + i*8 + 1).getText().trim(); 
+			TransferRate = months.get(startpos + i*8 + 7).getText().trim(); 
+			ContainmentRate = months.get(startpos + i*8 + 2).getText().trim(); 
+			CallDuration = months.get(startpos + i*8 + 3).getText().trim(); 
+			AverageCallDuration = months.get(startpos + i*8 + 4).getText().trim(); 
+			AvgCallDurationForTransferred = months.get(startpos + i*8 + 6).getText().trim(); 
+			
+			rowValue = Month+CallVolume+Transfers+TransferRate+ContainmentRate+CallDuration+AverageCallDuration+AvgCallDurationForTransferred;
+			WebReportContent.add(rowValue.replaceAll(",",""));
+			
+		}		
 		driver.switchTo().window(mainWinhandler);
 		
-//		downloadReport("PDF");
-//		downloadReport("CSV");
-//		downloadReport("Excel");
-		
-		
+		downloadReport("PDF");
+		downloadReport("CSV");
+		downloadReport("Excel");
+		report.excelReportRead();
+		report.ExtractExcelContent();
+		report.pdfReportRead();
+		report.ExtractPDFContent();
+		reportComparison();
 	}
 	
 	public void downloadReport(String type) {
@@ -207,6 +176,32 @@ public class ExportReport extends Mainpage {
 			}
 	}
 	
-	 
+	public void reportComparison() {
+		
+		boolean test = true;
+		
+		for(int i = 0; i < WebReportContent.size() ; i++) {
+			if (!WebReportContent.get(i).equals(report.getReport("pdf").get(i))) {
+				test = false;
+			}
+		}
+		System.out.println(test);
+		test = true;
+		for(int i = 0; i < WebReportContent.size() ; i++) {
+			if (!WebReportContent.get(i).equals(report.getReport("xls").get(i))) {
+				System.out.println(WebReportContent.get(i) + "  " +report.getReport("xls").get(i));
+				test = false;
+			}
+		}
+		System.out.println(test);
+		driver.quit();
+	}
+	public static void main(String[] args) {
+		ReportFileCreate f = new ReportFileCreate();
+		f.pdfReportRead();
+		f.ExtractPDFContent();
+System.out.println(f.getReport("pdf").get(0));
+		
+	}
 	
 }

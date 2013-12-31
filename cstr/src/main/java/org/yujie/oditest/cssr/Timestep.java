@@ -1,7 +1,6 @@
 package org.yujie.oditest.cssr;
 
 import java.text.DateFormat;
-import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -9,25 +8,18 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Vector;
-
-import junit.framework.Assert;
 
 
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.interactions.SendKeysAction;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.google.common.collect.Sets.SetView;
 
 public class Timestep extends Mainpage {
 	
@@ -232,7 +224,7 @@ public class Timestep extends Mainpage {
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("CrystalViewercridreportpage")));
 		try{
 			
-			WebElement hour = driver.findElement(By.xpath("//*[text()='Hour']"));
+			driver.findElement(By.xpath("//*[text()='Hour']"));
 			
 			ReportFile.addTestCase("ODI6.x-664:Time step week selection started", "ODI6.x-664:Time step month selection started => succeed");
 		}

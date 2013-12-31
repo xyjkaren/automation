@@ -12,7 +12,7 @@ public class UserInfo {
 	
 	public UserInfo (String userPropath) throws IOException
 	{
-		InputStream is = new FileInputStream(userPropath);
+		InputStream is = getClass().getResourceAsStream(userPropath);
 		try {
 				String[] usertype = userPropath.split("\\.");
 				String fileExt = usertype[1];
@@ -43,7 +43,7 @@ public class UserInfo {
 	}
 
 	public static void main(String[] args) throws IOException{
-	 UserInfo user = new UserInfo("userinfo.xml");
+	 UserInfo user = new UserInfo("/userinfo.xml");
       System.out.println(user.getProperties("username"));
 		
 	}

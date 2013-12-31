@@ -1,16 +1,11 @@
 package org.yujie.oditest.cssr;
 
-import java.io.IOException;
 import java.util.NoSuchElementException;
 
-import net.sourceforge.htmlunit.corejs.javascript.tools.debugger.Main;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Cookie;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
