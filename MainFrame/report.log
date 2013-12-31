@@ -1,0 +1,669 @@
+2013-12-04 12:52:31 INFO  Main:32 - Root element :company
+2013-12-04 12:52:31 INFO  Main:38 - 
+Current Element :com.nuance.newFrame.sali.LoginCheck
+2013-12-04 12:52:31 INFO  Main:56 - tracejava.lang.ClassNotFoundException: com.nuance.newFrame.sali.LoginCheck
+2013-12-04 13:16:49 INFO  Main:32 - Root element :company
+2013-12-04 13:16:49 INFO  Main:38 - 
+Current Element :com.nuance.newFrame.sali.LoginCheck
+2013-12-04 13:16:52 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-04 13:16:52 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-04 13:16:52 INFO  Main:28 - pass login fuction
+2013-12-04 13:16:52 INFO  Main:48 - execute
+2013-12-04 13:16:54 INFO  Main:38 - 
+Current Element :com.nuance.newFrame.sali.SelectTimeRange
+2013-12-04 13:16:56 INFO  Main:48 - findTheLables
+2013-12-04 13:17:00 INFO  Main:102 - TimeRange Element  is Present
+2013-12-04 13:17:00 INFO  Main:102 - StartTime Element  is Present
+2013-12-04 13:17:00 INFO  Main:102 - EndTime Element  is Present
+2013-12-04 13:17:00 INFO  Main:102 - TimeZone Element  is Present
+2013-12-04 13:17:00 INFO  Main:102 - Application Element  is Present
+2013-12-04 13:17:06 INFO  Main:98 - DNIS Element is absent
+2013-12-04 13:17:06 INFO  Main:102 - Language Element  is Present
+2013-12-04 13:17:07 INFO  Main:48 - quit
+2013-12-04 13:18:02 INFO  Main:32 - Root element :company
+2013-12-04 13:18:02 INFO  Main:38 - 
+Current Element :com.nuance.newFrame.sali.LoginCheck
+2013-12-04 13:18:06 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-04 13:18:06 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-04 13:18:06 INFO  Main:28 - pass login fuction
+2013-12-04 13:18:06 INFO  Main:48 - execute
+2013-12-04 13:18:08 INFO  Main:38 - 
+Current Element :com.nuance.newFrame.sali.SelectTimeRange
+2013-12-04 13:18:09 INFO  Main:48 - findTheLables
+2013-12-04 13:18:13 INFO  Main:102 - TimeRange Element  is Present
+2013-12-04 13:18:13 INFO  Main:102 - StartTime Element  is Present
+2013-12-04 13:18:13 INFO  Main:102 - EndTime Element  is Present
+2013-12-04 13:18:13 INFO  Main:102 - TimeZone Element  is Present
+2013-12-04 13:18:13 INFO  Main:102 - Application Element  is Present
+2013-12-04 13:18:18 INFO  Main:98 - DNIS Element is absent
+2013-12-04 13:18:18 INFO  Main:102 - Language Element  is Present
+2013-12-04 13:18:20 INFO  Main:48 - quit
+2013-12-04 14:11:40 INFO  Main:32 - Root element :company
+2013-12-04 14:11:40 INFO  Main:38 - 
+Current Element :com.nuance.newFrame.sali.LoginCheck
+2013-12-04 14:11:40 INFO  Main:56 - tracejava.lang.ClassNotFoundException: com.nuance.newFrame.sali.LoginCheck
+2013-12-04 14:57:35 INFO  Main:32 - Root element :company
+2013-12-04 14:57:35 INFO  Main:38 - 
+Current Element :com.nuance.newFrame.sali.LoginCheck
+2013-12-04 15:04:18 INFO  Main:32 - Root element :company
+2013-12-04 15:04:18 INFO  Main:38 - 
+Current Element :com.nuance.newFrame.sali.LoginCheck
+2013-12-04 15:34:07 INFO  Main:32 - Root element :company
+2013-12-04 15:34:07 INFO  Main:38 - 
+Current Element :com.nuance.newFrame.sali.LoginCheck
+2013-12-04 15:34:10 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-04 15:34:10 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-04 15:34:10 INFO  Main:28 - pass login fuction
+2013-12-04 15:34:10 INFO  Main:48 - execute
+2013-12-04 15:34:11 INFO  Main:56 - tracejava.lang.reflect.InvocationTargetException
+2013-12-04 16:34:49 INFO  Main:32 - Root element :company
+2013-12-04 16:34:49 INFO  Main:38 - 
+Current Element :com.nuance.newFrame.sali.LoginCheck
+2013-12-04 16:34:54 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-04 16:34:54 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-04 16:34:54 INFO  Main:28 - pass login fuction
+2013-12-04 16:34:54 INFO  Main:48 - execute
+2013-12-04 16:34:55 INFO  Main:56 - tracejava.lang.reflect.InvocationTargetException
+2013-12-05 11:15:25 INFO  Main:32 - Root element :company
+2013-12-05 11:15:25 INFO  Main:32 - Root element :company
+2013-12-05 11:15:25 INFO  Main:38 - 
+Current Element :com.nuance.newFrame.sali.LoginCheck
+2013-12-05 11:15:25 INFO  Main:38 - 
+Current Element :com.nuance.newFrame.sali.LoginCheck
+2013-12-05 11:15:29 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-05 11:15:29 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-05 11:15:30 INFO  Main:28 - pass login fuction
+2013-12-05 11:15:30 INFO  Main:48 - execute
+2013-12-05 11:15:30 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-05 11:15:30 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-05 11:15:30 INFO  Main:28 - pass login fuction
+2013-12-05 11:15:30 INFO  Main:48 - execute
+2013-12-05 11:15:44 INFO  Main:56 - tracejava.lang.reflect.InvocationTargetException
+2013-12-05 12:40:57 INFO  Main:32 - Root element :company
+2013-12-05 12:40:57 INFO  Main:38 - 
+Current Element :com.nuance.newFrame.sali.LoginCheck
+2013-12-05 12:40:57 INFO  Main:56 - tracejava.lang.ClassNotFoundException: com.nuance.newFrame.sali.LoginCheck
+2013-12-05 12:58:11 INFO  Main:32 - Root element :company
+2013-12-05 12:58:11 INFO  Main:38 - 
+Current Element :com.nuance.newFrame.sali.LoginCheck
+2013-12-05 12:58:11 INFO  Main:56 - tracejava.lang.ClassNotFoundException: com.nuance.newFrame.sali.LoginCheck
+2013-12-05 12:59:35 INFO  Main:32 - Root element :company
+2013-12-05 12:59:35 INFO  Main:38 - 
+Current Element :com.nuance.newFrame.sali.LoginCheck
+2013-12-05 12:59:35 INFO  Main:56 - tracejava.lang.ClassNotFoundException: com.nuance.newFrame.sali.LoginCheck
+2013-12-05 13:01:59 INFO  Main:32 - Root element :company
+2013-12-05 13:01:59 INFO  Main:38 - 
+Current Element :com.nuance.newFrame.sali.LoginCheck
+2013-12-05 13:01:59 INFO  Main:56 - tracejava.lang.ClassNotFoundException: com.nuance.newFrame.sali.LoginCheck
+2013-12-05 13:02:41 INFO  Main:32 - Root element :company
+2013-12-05 13:02:41 INFO  Main:38 - 
+Current Element :com.nuance.newFrame.sali.LoginCheck
+2013-12-05 13:02:45 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-05 13:02:45 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-05 13:02:45 INFO  Main:28 - pass login fuction
+2013-12-05 13:02:45 INFO  Main:48 - execute
+2013-12-05 13:02:47 INFO  Main:38 - 
+Current Element :com.nuance.newFrame.sali.SelectTimeRange
+2013-12-05 13:02:49 INFO  Main:48 - findTheLables
+2013-12-05 13:02:52 INFO  Main:102 - TimeRange Element  is Present
+2013-12-05 13:02:52 INFO  Main:102 - StartTime Element  is Present
+2013-12-05 13:02:52 INFO  Main:102 - EndTime Element  is Present
+2013-12-05 13:02:52 INFO  Main:102 - TimeZone Element  is Present
+2013-12-05 13:02:52 INFO  Main:102 - Application Element  is Present
+2013-12-05 13:02:57 INFO  Main:107 - Exceptionorg.openqa.selenium.NoSuchElementException: Finding elements returned an unexpected error (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 5.01 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: 'unknown', revision: 'unknown', time: 'unknown'
+System info: host: 'SUN-USALI-L', ip: '10.14.24.145', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_25'
+Session ID: 48a26154-4591-43a2-9dbf-aae248fc4b1e
+Driver info: org.openqa.selenium.ie.InternetExplorerDriver
+Capabilities [{platform=WINDOWS, javascriptEnabled=true, elementScrollBehavior=0, ignoreZoomSetting=false, enablePersistentHover=true, ie.ensureCleanSession=false, browserName=internet explorer, enableElementCacheCleanup=true, unexpectedAlertBehaviour=dismiss, version=8, ie.usePerProcessProxy=false, ignoreProtectedModeSettings=false, cssSelectorsEnabled=true, requireWindowFocus=false, initialBrowserUrl=http://localhost:46051/, handlesAlerts=true, ie.forceCreateProcessApi=false, nativeEvents=true, browserAttachTimeout=0, ie.browserCommandLineSwitches=, takesScreenshot=true}]
+2013-12-05 13:02:57 INFO  Main:107 - Exceptionorg.openqa.selenium.NoSuchWindowException: Unable to find elements on closed window (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 4 milliseconds
+Build info: version: 'unknown', revision: 'unknown', time: 'unknown'
+System info: host: 'SUN-USALI-L', ip: '10.14.24.145', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_25'
+Session ID: 48a26154-4591-43a2-9dbf-aae248fc4b1e
+Driver info: org.openqa.selenium.ie.InternetExplorerDriver
+Capabilities [{platform=WINDOWS, javascriptEnabled=true, elementScrollBehavior=0, ignoreZoomSetting=false, enablePersistentHover=true, ie.ensureCleanSession=false, browserName=internet explorer, enableElementCacheCleanup=true, unexpectedAlertBehaviour=dismiss, version=8, ie.usePerProcessProxy=false, ignoreProtectedModeSettings=false, cssSelectorsEnabled=true, requireWindowFocus=false, initialBrowserUrl=http://localhost:46051/, handlesAlerts=true, ie.forceCreateProcessApi=false, nativeEvents=true, browserAttachTimeout=0, ie.browserCommandLineSwitches=, takesScreenshot=true}]
+2013-12-05 13:02:57 INFO  Main:56 - tracejava.lang.reflect.InvocationTargetException
+2013-12-05 13:52:29 INFO  Main:32 - Root element :company
+2013-12-05 13:52:29 INFO  Main:38 - 
+Current Element :com.nuance.newFrame.sali.LoginCheck
+2013-12-05 13:55:49 INFO  Main:32 - Root element :company
+2013-12-05 13:55:49 INFO  Main:38 - 
+Current Element :com.nuance.newFrame.sali.LoginCheck
+2013-12-05 13:55:52 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-05 13:55:52 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-05 13:55:52 INFO  Main:28 - pass login fuction
+2013-12-05 13:55:52 INFO  Main:48 - execute
+2013-12-05 13:55:54 INFO  Main:38 - 
+Current Element :com.nuance.newFrame.sali.SelectTimeRange
+2013-12-05 13:55:55 INFO  Main:48 - findTheLables
+2013-12-05 13:56:00 INFO  Main:102 - TimeRange Element  is Present
+2013-12-05 13:56:00 INFO  Main:102 - StartTime Element  is Present
+2013-12-05 13:56:00 INFO  Main:102 - EndTime Element  is Present
+2013-12-05 13:56:00 INFO  Main:102 - TimeZone Element  is Present
+2013-12-05 13:56:00 INFO  Main:102 - Application Element  is Present
+2013-12-05 13:56:05 INFO  Main:98 - DNIS Element is absent
+2013-12-05 13:56:05 INFO  Main:102 - Language Element  is Present
+2013-12-05 13:56:07 INFO  Main:48 - quit
+2013-12-05 13:58:59 INFO  Main:32 - Root element :company
+2013-12-05 13:58:59 INFO  Main:38 - 
+Current Element :com.nuance.newFrame.sali.LoginCheck
+2013-12-11 13:53:04 INFO  Main:35 - Root element: company
+2013-12-11 13:53:04 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-11 13:53:08 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-11 13:53:08 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-11 13:53:08 INFO  Main:28 - pass login fuction
+2013-12-11 13:53:08 INFO  Main:52 - Current Method: execute
+2013-12-11 13:53:10 INFO  Main:77 - Exception tracejava.lang.NullPointerException
+2013-12-11 13:54:58 INFO  Main:35 - Root element: company
+2013-12-11 13:55:34 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-11 13:55:42 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-11 13:55:42 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-11 13:55:42 INFO  Main:28 - pass login fuction
+2013-12-11 13:55:49 INFO  Main:52 - Current Method: execute
+2013-12-11 13:56:08 INFO  Main:77 - Exception tracejava.lang.NullPointerException
+2013-12-11 13:58:19 INFO  Main:35 - Root element: company
+2013-12-11 13:58:32 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-11 13:58:37 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-11 13:58:37 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-11 13:58:37 INFO  Main:28 - pass login fuction
+2013-12-11 13:58:46 INFO  Main:52 - Current Method: execute
+2013-12-11 13:58:59 INFO  Main:57 - Current class: com.nuance.newFrame.testCase.Mainpage
+2013-12-11 13:59:44 INFO  Main:77 - Exception tracejava.lang.ClassNotFoundException: com.nuance.newFrame.testCase.Mainpage
+2013-12-11 14:00:46 INFO  Main:35 - Root element: company
+2013-12-11 14:00:48 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-11 14:00:51 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-11 14:00:51 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-11 14:00:51 INFO  Main:28 - pass login fuction
+2013-12-11 14:00:55 INFO  Main:52 - Current Method: execute
+2013-12-11 14:01:00 INFO  Main:57 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-11 14:01:17 INFO  Main:77 - Exception tracejava.lang.NoSuchMethodException: com.nuance.newFrame.testCases.Mainpage.#text()
+2013-12-11 14:09:02 INFO  Main:35 - Root element: company
+2013-12-11 14:09:04 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-11 14:09:07 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-11 14:09:07 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-11 14:09:07 INFO  Main:28 - pass login fuction
+2013-12-11 14:09:17 INFO  Main:52 - Current Method: execute
+2013-12-11 14:09:21 INFO  Main:57 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-11 14:09:27 INFO  Main:77 - Exception tracejava.lang.NoSuchMethodException: com.nuance.newFrame.testCases.Mainpage.#text()
+2013-12-11 14:11:59 INFO  Main:35 - Root element: company
+2013-12-11 14:12:00 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-11 14:12:04 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-11 14:12:04 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-11 14:12:04 INFO  Main:28 - pass login fuction
+2013-12-11 14:12:07 INFO  Main:52 - Current Method: execute
+2013-12-11 14:12:12 INFO  Main:57 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-11 14:12:17 INFO  Main:77 - Exception tracejava.lang.NoSuchMethodException: com.nuance.newFrame.testCases.Mainpage.#text()
+2013-12-11 14:13:30 INFO  Main:35 - Root element: company
+2013-12-11 14:13:36 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-11 14:13:39 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-11 14:13:39 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-11 14:13:39 INFO  Main:28 - pass login fuction
+2013-12-11 14:13:39 INFO  Main:52 - Current Method: execute
+2013-12-11 14:13:41 INFO  Main:57 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-11 14:13:41 INFO  Main:78 - Exception tracejava.lang.NoSuchMethodException: com.nuance.newFrame.testCases.Mainpage.#text()
+2013-12-11 14:13:57 INFO  Main:35 - Root element: company
+2013-12-11 14:14:00 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-11 14:14:05 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-11 14:14:05 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-11 14:14:05 INFO  Main:28 - pass login fuction
+2013-12-11 14:14:15 INFO  Main:52 - Current Method: execute
+2013-12-11 14:14:20 INFO  Main:57 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-11 14:14:55 INFO  Main:35 - Root element: company
+2013-12-11 14:14:56 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-11 14:14:59 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-11 14:14:59 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-11 14:14:59 INFO  Main:28 - pass login fuction
+2013-12-11 14:15:02 INFO  Main:52 - Current Method: execute
+2013-12-11 14:15:06 INFO  Main:57 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-11 14:16:07 INFO  Main:35 - Root element: company
+2013-12-11 14:16:08 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-11 14:16:11 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-11 14:16:11 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-11 14:16:11 INFO  Main:28 - pass login fuction
+2013-12-11 14:16:13 INFO  Main:52 - Current Method: execute
+2013-12-11 14:16:18 INFO  Main:57 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-11 14:16:53 INFO  Main:35 - Root element: company
+2013-12-11 14:16:54 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-11 14:16:57 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-11 14:16:57 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-11 14:16:58 INFO  Main:28 - pass login fuction
+2013-12-11 14:17:00 INFO  Main:52 - Current Method: execute
+2013-12-11 14:17:06 INFO  Main:57 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-11 14:19:38 INFO  Main:35 - Root element: company
+2013-12-11 14:19:39 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-11 14:19:42 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-11 14:19:42 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-11 14:19:42 INFO  Main:28 - pass login fuction
+2013-12-11 14:19:44 INFO  Main:52 - Current Method: execute
+2013-12-11 14:19:49 INFO  Main:57 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-11 14:24:13 INFO  Main:35 - Root element: company
+2013-12-11 14:24:20 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-11 14:24:26 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-11 14:24:26 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-11 14:24:26 INFO  Main:28 - pass login fuction
+2013-12-11 14:24:50 INFO  Main:35 - Root element: company
+2013-12-11 14:24:53 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-11 14:25:36 INFO  Main:53 - Current Method: execute
+2013-12-11 14:25:43 INFO  Main:58 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-11 16:49:29 INFO  Main:35 - Root element: company
+2013-12-11 16:49:36 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-11 16:49:47 INFO  Main:53 - Current Method: execute
+2013-12-11 16:51:28 INFO  Main:58 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-11 16:51:46 INFO  Main:66 - execute
+2013-12-11 16:51:59 INFO  Main:85 - Exception tracejava.lang.NoSuchMethodException: com.nuance.newFrame.testCases.Mainpage.#text()
+2013-12-11 16:56:24 INFO  Main:35 - Root element: company
+2013-12-11 16:56:31 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-11 16:56:37 INFO  Main:53 - Current Method: execute
+2013-12-11 16:56:39 INFO  Main:58 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-11 16:56:45 INFO  Main:67 - gotomainpage
+2013-12-11 16:57:58 INFO  Main:35 - Root element: company
+2013-12-11 16:57:58 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-11 16:58:19 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-11 16:58:19 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-11 16:58:19 INFO  Main:28 - pass login fuction
+2013-12-11 16:58:19 INFO  Main:53 - Current Method: execute
+2013-12-11 16:58:29 INFO  Main:58 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-11 16:58:29 INFO  Main:67 - gotomainpage
+2013-12-11 16:58:29 INFO  Main:85 - Exception tracejava.lang.NoSuchMethodException: com.nuance.newFrame.testCases.Mainpage.#text()
+2013-12-11 17:00:33 INFO  Main:35 - Root element: company
+2013-12-11 17:00:45 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-11 17:01:00 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-11 17:01:00 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-11 17:01:00 INFO  Main:28 - pass login fuction
+2013-12-11 17:02:08 INFO  Main:53 - Current Method: execute
+2013-12-11 17:02:36 INFO  Main:58 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-11 17:03:32 INFO  Main:67 - gotomainpage
+2013-12-11 17:06:39 INFO  Main:83 - Exception tracejava.lang.NoSuchMethodException: com.nuance.newFrame.testCases.Mainpage.#text()
+2013-12-12 10:35:53 INFO  Main:35 - Root element: company
+2013-12-12 10:35:58 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-12 10:36:05 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-12 10:36:05 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-12 10:36:05 INFO  Main:28 - pass login fuction
+2013-12-12 10:36:12 INFO  Main:53 - Current Method: execute
+2013-12-12 10:36:42 INFO  Main:58 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 10:37:07 INFO  Main:67 - gotomainpage
+2013-12-12 10:37:36 INFO  Main:35 - Root element: company
+2013-12-12 10:37:43 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-12 10:37:48 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-12 10:37:48 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-12 10:37:48 INFO  Main:28 - pass login fuction
+2013-12-12 10:37:51 INFO  Main:53 - Current Method: execute
+2013-12-12 10:37:54 INFO  Main:58 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 10:37:56 INFO  Main:67 - gotomainpage
+2013-12-12 10:37:57 INFO  Main:83 - Exception tracejava.lang.NoSuchMethodException: com.nuance.newFrame.testCases.Mainpage.#text()
+2013-12-12 10:38:50 INFO  Main:35 - Root element: company
+2013-12-12 10:38:53 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-12 10:38:56 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-12 10:38:56 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-12 10:38:56 INFO  Main:28 - pass login fuction
+2013-12-12 10:38:59 INFO  Main:53 - Current Method: execute
+2013-12-12 10:39:04 INFO  Main:58 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 10:39:07 INFO  Main:67 - gotomainpage
+2013-12-12 10:39:16 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.SelectTimeRange
+2013-12-12 10:53:28 INFO  Main:35 - Root element: company
+2013-12-12 10:53:30 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-12 10:53:35 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-12 10:53:35 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-12 10:53:35 INFO  Main:28 - pass login fuction
+2013-12-12 10:53:37 INFO  Main:53 - Current Method: execute
+2013-12-12 10:53:44 INFO  Main:58 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 10:53:49 INFO  Main:67 - gotomainpage
+2013-12-12 10:53:52 INFO  Main:83 - Exception tracejava.lang.NoSuchMethodException: com.nuance.newFrame.testCases.Mainpage.#text()
+2013-12-12 10:54:33 INFO  Main:35 - Root element: company
+2013-12-12 10:54:35 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-12 10:54:38 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-12 10:54:38 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-12 10:54:38 INFO  Main:28 - pass login fuction
+2013-12-12 10:55:21 INFO  Main:53 - Current Method: execute
+2013-12-12 10:55:37 INFO  Main:58 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 10:55:42 INFO  Main:68 - gotomainpage
+2013-12-12 11:07:48 INFO  Main:35 - Root element: company
+2013-12-12 11:07:51 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-12 11:07:56 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-12 11:07:56 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-12 11:07:56 INFO  Main:28 - pass login fuction
+2013-12-12 11:07:58 INFO  Main:53 - Current Method: execute
+2013-12-12 11:08:04 INFO  Main:58 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 11:08:07 INFO  Main:68 - gotomainpage
+2013-12-12 11:08:12 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.SelectTimeRange
+2013-12-12 11:08:17 INFO  Main:53 - Current Method: search
+2013-12-12 11:08:38 INFO  Main:51 - Caught NoSuchElementException:Unable to find element with css selector == input[type="sudbmit"] (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 5.43 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: 'unknown', revision: 'unknown', time: 'unknown'
+System info: host: 'SUN-USALI-L', ip: '10.14.24.145', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_25'
+Session ID: c485b3c4-9624-43a7-a0ce-8134b25acc20
+Driver info: org.openqa.selenium.ie.InternetExplorerDriver
+Capabilities [{platform=WINDOWS, javascriptEnabled=true, elementScrollBehavior=0, ignoreZoomSetting=false, enablePersistentHover=true, ie.ensureCleanSession=false, browserName=internet explorer, enableElementCacheCleanup=true, unexpectedAlertBehaviour=dismiss, version=8, ie.usePerProcessProxy=false, ignoreProtectedModeSettings=false, cssSelectorsEnabled=true, requireWindowFocus=false, initialBrowserUrl=http://localhost:1826/, handlesAlerts=true, ie.forceCreateProcessApi=false, nativeEvents=true, browserAttachTimeout=0, ie.browserCommandLineSwitches=, takesScreenshot=true}]
+2013-12-12 11:08:59 INFO  Main:58 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 11:09:02 INFO  Main:68 - gotomainpage
+2013-12-12 11:43:31 INFO  Main:84 - Exception traceorg.xml.sax.SAXParseException; systemId: file:/C:/uttam/testcases.xml; lineNumber: 29; columnNumber: 6; The string "--" is not permitted within comments.
+2013-12-12 11:43:45 INFO  Main:35 - Root element: company
+2013-12-12 11:43:45 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-12 11:43:49 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-12 11:43:49 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-12 11:43:49 INFO  Main:28 - pass login fuction
+2013-12-12 11:43:49 INFO  Main:53 - Current Method: execute
+2013-12-12 11:43:51 INFO  Main:58 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 11:43:51 INFO  Main:68 - gotomainpage
+2013-12-12 11:43:53 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.Timestep
+2013-12-12 11:43:54 INFO  Main:53 - Current Method: search
+2013-12-12 11:44:00 INFO  Main:53 - Current Method: abfilterselectable
+2013-12-12 11:47:23 INFO  Main:35 - Root element: company
+2013-12-12 11:47:26 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-12 11:47:31 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-12 11:47:31 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-12 11:47:31 INFO  Main:28 - pass login fuction
+2013-12-12 11:47:35 INFO  Main:53 - Current Method: execute
+2013-12-12 11:47:40 INFO  Main:58 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 11:47:46 INFO  Main:68 - gotomainpage
+2013-12-12 11:54:06 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.Timestep
+2013-12-12 11:54:15 INFO  Main:53 - Current Method: search
+2013-12-12 11:54:42 INFO  Main:58 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 11:54:50 INFO  Main:68 - gotomainpage
+2013-12-12 11:54:54 INFO  Main:53 - Current Method: abfilterselectable
+2013-12-12 11:54:59 INFO  Main:103 - A/B filter values are present
+2013-12-12 11:55:47 INFO  Main:58 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 11:55:52 INFO  Main:68 - gotomainpage
+2013-12-12 11:57:47 INFO  Main:35 - Root element: company
+2013-12-12 11:57:50 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-12 11:57:55 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-12 11:57:55 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-12 11:57:56 INFO  Main:28 - pass login fuction
+2013-12-12 11:58:01 INFO  Main:53 - Current Method: execute
+2013-12-12 11:58:06 INFO  Main:58 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 11:58:12 INFO  Main:68 - gotomainpage
+2013-12-12 11:58:17 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.Timestep
+2013-12-12 11:58:24 INFO  Main:53 - Current Method: search
+2013-12-12 11:59:31 INFO  Main:35 - Root element: company
+2013-12-12 11:59:36 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-12 11:59:40 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-12 11:59:40 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-12 11:59:41 INFO  Main:28 - pass login fuction
+2013-12-12 11:59:46 INFO  Main:53 - Current Method: execute
+2013-12-12 11:59:51 INFO  Main:58 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 11:59:54 INFO  Main:68 - gotomainpage
+2013-12-12 12:00:00 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.Timestep
+2013-12-12 12:00:06 INFO  Main:53 - Current Method: search
+2013-12-12 12:02:13 INFO  Main:35 - Root element: company
+2013-12-12 12:02:14 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-12 12:02:17 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-12 12:02:17 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-12 12:02:17 INFO  Main:28 - pass login fuction
+2013-12-12 12:02:25 INFO  Main:53 - Current Method: execute
+2013-12-12 12:02:31 INFO  Main:58 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 12:02:37 INFO  Main:67 - gotomainpage
+2013-12-12 12:02:41 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.Timestep
+2013-12-12 12:02:51 INFO  Main:53 - Current Method: abfilter
+2013-12-12 12:03:12 INFO  Main:58 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 12:03:15 INFO  Main:67 - gotomainpage
+2013-12-12 12:23:28 INFO  Main:35 - Root element: company
+2013-12-12 12:23:34 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-12 12:23:39 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-12 12:23:39 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-12 12:23:40 INFO  Main:28 - pass login fuction
+2013-12-12 12:23:47 INFO  Main:53 - Current Method: execute
+2013-12-12 12:24:22 INFO  Main:58 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 12:24:28 INFO  Main:67 - gotomainpage
+2013-12-12 12:24:33 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.Timestep
+2013-12-12 12:24:53 INFO  Main:53 - Current Method: abfilter
+2013-12-12 12:25:45 INFO  Main:83 - Exception tracejava.lang.reflect.InvocationTargetException
+2013-12-12 12:27:55 INFO  Main:35 - Root element: company
+2013-12-12 12:27:56 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-12 12:27:58 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-12 12:27:58 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-12 12:27:58 INFO  Main:28 - pass login fuction
+2013-12-12 12:28:02 INFO  Main:53 - Current Method: execute
+2013-12-12 12:28:05 INFO  Main:58 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 12:28:07 INFO  Main:67 - gotomainpage
+2013-12-12 12:28:11 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.Timestep
+2013-12-12 12:28:17 INFO  Main:53 - Current Method: abfilter
+2013-12-12 12:29:22 INFO  Main:53 - Current Method: abfilterselectable
+2013-12-12 12:35:54 INFO  Main:35 - Root element: company
+2013-12-12 12:35:55 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-12 12:36:01 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-12 12:36:01 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-12 12:36:01 INFO  Main:28 - pass login fuction
+2013-12-12 12:36:04 INFO  Main:53 - Current Method: execute
+2013-12-12 12:36:08 INFO  Main:58 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 12:36:15 INFO  Main:67 - gotomainpage
+2013-12-12 12:36:19 INFO  Main:80 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 12:36:38 INFO  Main:89 - gotomainpage
+2013-12-12 12:36:44 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.Timestep
+2013-12-12 12:36:49 INFO  Main:53 - Current Method: abfilter
+2013-12-12 12:38:23 INFO  Main:80 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 12:38:26 INFO  Main:89 - gotomainpage
+2013-12-12 12:38:39 INFO  Main:100 - Exception tracejava.lang.reflect.InvocationTargetException
+2013-12-12 12:51:00 INFO  Main:35 - Root element: company
+2013-12-12 12:51:03 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-12 12:51:08 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-12 12:51:08 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-12 12:51:08 INFO  Main:28 - pass login fuction
+2013-12-12 12:51:10 INFO  Main:53 - Current Method: execute
+2013-12-12 12:51:15 INFO  Main:58 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 12:51:20 INFO  Main:67 - gotomainpage
+2013-12-12 12:51:26 INFO  Main:80 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 12:51:30 INFO  Main:89 - gotomainpage
+2013-12-12 12:51:33 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.Timestep
+2013-12-12 12:51:37 INFO  Main:53 - Current Method: abfilter
+2013-12-12 12:52:31 INFO  Main:80 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 12:52:35 INFO  Main:89 - gotomainpage
+2013-12-12 13:22:46 INFO  Main:35 - Root element: company
+2013-12-12 13:22:46 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-12 13:22:49 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-12 13:22:49 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-12 13:22:49 INFO  Main:28 - pass login fuction
+2013-12-12 13:22:49 INFO  Main:53 - Current Method: execute
+2013-12-12 13:22:51 INFO  Main:80 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 13:22:51 INFO  Main:89 - gotomainpage
+2013-12-12 13:22:52 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.Timestep
+2013-12-12 13:22:53 INFO  Main:53 - Current Method: abfilter
+2013-12-12 13:23:39 INFO  Main:80 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 13:23:39 INFO  Main:89 - gotomainpage
+2013-12-12 13:23:41 INFO  Main:53 - Current Method: abfilterselectable
+2013-12-12 13:23:44 INFO  Main:103 - A/B filter values are present
+2013-12-12 13:24:21 INFO  Main:80 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 13:24:21 INFO  Main:89 - gotomainpage
+2013-12-12 13:24:22 INFO  Main:53 - Current Method: quitBrowser
+2013-12-12 13:24:22 INFO  Main:80 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 13:24:22 INFO  Main:89 - gotomainpage
+2013-12-12 13:24:23 INFO  Main:100 - Exception tracejava.lang.NoSuchMethodException: com.nuance.newFrame.testCases.Timestep.quitBrowser()
+2013-12-12 14:29:00 INFO  Main:35 - Root element: company
+2013-12-12 14:29:00 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-12 14:29:04 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-12 14:29:04 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-12 14:29:04 INFO  Main:28 - pass login fuction
+2013-12-12 14:29:04 INFO  Main:53 - Current Method: execute
+2013-12-12 14:29:07 INFO  Main:95 - this is in final block
+2013-12-12 14:29:07 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.Timestep
+2013-12-12 14:29:08 INFO  Main:53 - Current Method: abfilter
+2013-12-12 14:29:53 INFO  Main:95 - this is in final block
+2013-12-12 14:29:53 INFO  Main:53 - Current Method: abfilterselectable
+2013-12-12 14:29:59 INFO  Main:95 - this is in final block
+2013-12-12 14:29:59 INFO  Main:53 - Current Method: quitBrowser
+2013-12-12 14:29:59 INFO  Main:95 - this is in final block
+2013-12-12 14:29:59 INFO  Main:102 - Exception tracejava.lang.NoSuchMethodException: com.nuance.newFrame.testCases.Timestep.quitBrowser()
+2013-12-12 14:32:09 INFO  Main:35 - Root element: company
+2013-12-12 14:32:11 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-12 14:32:16 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-12 14:32:16 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-12 14:32:16 INFO  Main:28 - pass login fuction
+2013-12-12 14:32:19 INFO  Main:53 - Current Method: execute
+2013-12-12 14:32:25 INFO  Main:95 - this is in final block
+2013-12-12 14:32:30 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.Timestep
+2013-12-12 14:32:33 INFO  Main:53 - Current Method: abfilter
+2013-12-12 14:33:30 INFO  Main:95 - this is in final block
+2013-12-12 14:33:35 INFO  Main:53 - Current Method: abfilterselectable
+2013-12-12 14:33:52 INFO  Main:95 - this is in final block
+2013-12-12 14:33:53 INFO  Main:53 - Current Method: quitBrowser
+2013-12-12 14:33:54 INFO  Main:95 - this is in final block
+2013-12-12 14:33:57 INFO  Main:102 - Exception tracejava.lang.NoSuchMethodException: com.nuance.newFrame.testCases.Timestep.quitBrowser()
+2013-12-12 14:34:07 INFO  Main:104 - this is in final block 2
+2013-12-12 14:35:37 INFO  Main:35 - Root element: company
+2013-12-12 14:35:37 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-12 14:35:40 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-12 14:35:40 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-12 14:35:41 INFO  Main:28 - pass login fuction
+2013-12-12 14:35:41 INFO  Main:53 - Current Method: execute
+2013-12-12 14:35:42 INFO  Main:95 - this is in final block
+2013-12-12 14:35:42 INFO  Main:41 - 
+Current Class: com.nuance.newFrame.testCases.Timestep
+2013-12-12 14:35:44 INFO  Main:53 - Current Method: abfilter
+2013-12-12 14:36:29 INFO  Main:95 - this is in final block
+2013-12-12 14:36:29 INFO  Main:53 - Current Method: abfilterselectable
+2013-12-12 14:36:34 INFO  Main:95 - this is in final block
+2013-12-12 14:36:34 INFO  Main:53 - Current Method: quitBrowser
+2013-12-12 14:36:34 INFO  Main:95 - this is in final block
+2013-12-12 14:36:34 INFO  Main:102 - Exception tracejava.lang.NoSuchMethodException: com.nuance.newFrame.testCases.Timestep.quitBrowser()
+2013-12-12 14:36:34 INFO  Main:104 - this is in final block 2
+2013-12-12 15:00:22 INFO  Main:35 - Root element: company
+2013-12-12 15:00:30 INFO  Main:42 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-12 15:00:37 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-12 15:00:37 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-12 15:00:37 INFO  Main:28 - pass login fuction
+2013-12-12 15:02:16 INFO  Main:55 - Current Method: execute
+2013-12-12 15:02:29 INFO  Main:82 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 15:03:48 INFO  Main:91 - gotomainpage
+2013-12-12 15:03:53 INFO  Main:97 - this is in final block
+2013-12-12 15:03:59 INFO  Main:42 - 
+Current Class: com.nuance.newFrame.testCases.Timestep
+2013-12-12 15:15:51 INFO  Main:38 - Root element: company
+2013-12-12 15:15:51 INFO  Main:46 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-12 15:15:55 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-12 15:15:55 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-12 15:15:55 INFO  Main:28 - pass login fuction
+2013-12-12 15:15:55 INFO  Main:66 - Current Method: execute
+2013-12-12 15:15:57 INFO  Main:93 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 15:15:57 INFO  Main:102 - gotomainpage
+2013-12-12 15:15:58 INFO  Main:108 - this is in final block
+2013-12-12 15:15:58 INFO  Main:116 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 15:15:58 INFO  Main:131 - this is in final block
+2013-12-12 15:15:58 INFO  Main:46 - 
+Current Class: com.nuance.newFrame.testCases.Timestep
+2013-12-12 15:15:59 INFO  Main:66 - Current Method: abfilter
+2013-12-12 15:16:45 INFO  Main:93 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 15:16:45 INFO  Main:102 - gotomainpage
+2013-12-12 15:16:47 INFO  Main:108 - this is in final block
+2013-12-12 15:16:47 INFO  Main:66 - Current Method: abfilterselectable
+2013-12-12 15:16:50 INFO  Main:103 - A/B filter values are present
+2013-12-12 15:17:25 INFO  Main:93 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 15:17:25 INFO  Main:102 - gotomainpage
+2013-12-12 15:17:27 INFO  Main:108 - this is in final block
+2013-12-12 15:17:27 INFO  Main:66 - Current Method: quitBrowser
+2013-12-12 15:17:27 INFO  Main:93 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 15:17:27 INFO  Main:102 - gotomainpage
+2013-12-12 15:17:28 INFO  Main:108 - this is in final block
+2013-12-12 15:17:28 INFO  Main:113 - Exception tracejava.lang.NoSuchMethodException: com.nuance.newFrame.testCases.Timestep.quitBrowser()
+2013-12-12 15:17:28 INFO  Main:116 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 15:17:28 INFO  Main:131 - this is in final block
+2013-12-12 15:17:28 INFO  Main:138 - this is in final block 2
+2013-12-12 15:18:00 INFO  Main:38 - Root element: company
+2013-12-12 15:18:01 INFO  Main:46 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-12 15:18:12 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-12 15:18:12 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-12 15:18:12 INFO  Main:28 - pass login fuction
+2013-12-12 15:18:14 INFO  Main:66 - Current Method: execute
+2013-12-12 15:18:20 INFO  Main:93 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 15:18:22 INFO  Main:102 - gotomainpage
+2013-12-12 15:18:25 INFO  Main:108 - this is in final block
+2013-12-12 15:18:41 INFO  Main:116 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 15:18:45 INFO  Main:131 - this is in final block
+2013-12-12 15:18:51 INFO  Main:46 - 
+Current Class: com.nuance.newFrame.testCases.Timestep
+2013-12-12 15:18:59 INFO  Main:66 - Current Method: abfilter
+2013-12-12 15:20:31 INFO  Main:93 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 15:20:34 INFO  Main:102 - gotomainpage
+2013-12-12 15:20:41 INFO  Main:108 - this is in final block
+2013-12-12 15:20:47 INFO  Main:66 - Current Method: abfilterselectable
+2013-12-12 15:20:53 INFO  Main:103 - A/B filter values are present
+2013-12-12 15:21:39 INFO  Main:93 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 15:21:42 INFO  Main:102 - gotomainpage
+2013-12-12 15:21:46 INFO  Main:108 - this is in final block
+2013-12-12 15:22:00 INFO  Main:116 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 15:22:07 INFO  Main:125 - quit
+2013-12-12 15:22:11 INFO  Main:131 - this is in final block
+2013-12-12 15:22:13 INFO  Main:138 - this is in final block 2
+2013-12-12 15:45:55 INFO  Main:38 - Root element: company
+2013-12-12 15:45:55 INFO  Main:46 - 
+Current Class: com.nuance.newFrame.testCases.LoginCheck
+2013-12-12 15:45:58 INFO  DefaultHttpClient:693 - I/O exception (java.net.SocketException) caught when processing request: Software caused connection abort: recv failed
+2013-12-12 15:45:58 INFO  DefaultHttpClient:700 - Retrying request
+2013-12-12 15:45:58 INFO  Main:28 - pass login fuction
+2013-12-12 15:45:58 INFO  Main:66 - Current Method: execute
+2013-12-12 15:46:00 INFO  Main:93 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 15:46:00 INFO  Main:102 - gotomainpage
+2013-12-12 15:46:02 INFO  Main:108 - this is in final block
+2013-12-12 15:46:02 INFO  Main:116 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 15:46:02 INFO  Main:131 - this is in final block
+2013-12-12 15:46:02 INFO  Main:46 - 
+Current Class: com.nuance.newFrame.testCases.Timestep
+2013-12-12 15:46:03 INFO  Main:66 - Current Method: abfilter
+2013-12-12 15:46:49 INFO  Main:93 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 15:46:49 INFO  Main:102 - gotomainpage
+2013-12-12 15:46:51 INFO  Main:108 - this is in final block
+2013-12-12 15:46:51 INFO  Main:66 - Current Method: abfilterselectable
+2013-12-12 15:46:55 INFO  Main:103 - A/B filter values are present
+2013-12-12 15:47:30 INFO  Main:93 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 15:47:30 INFO  Main:102 - gotomainpage
+2013-12-12 15:47:31 INFO  Main:108 - this is in final block
+2013-12-12 15:47:31 INFO  Main:116 - Current class: com.nuance.newFrame.testCases.Mainpage
+2013-12-12 15:47:31 INFO  Main:125 - quit
+2013-12-12 15:47:32 INFO  Main:131 - this is in final block
+2013-12-12 15:47:32 INFO  Main:138 - this is in final block 2
